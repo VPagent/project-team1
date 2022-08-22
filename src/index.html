@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Filmoteka</title>
     <link rel="stylesheet" href="./sass/index.scss" />
-    <!-- <script type="module" src="./index.js"></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,7 +14,7 @@
   </head>
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <header class="section header">  
+    <header class="section header">
       <div class="container">
         <include src="./partials/header-home.html"></include>
       </div>
@@ -23,7 +22,7 @@
     <main>
       <section class="section">
         <div class="container">
-          
+          <include src="partials/filmGallery.html"></include>
           <include src="./partials/pagination.html"></include>
         </div>
       </section>
@@ -32,7 +31,6 @@
       </footer>
     </main>
 
-    
-
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
