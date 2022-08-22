@@ -1,28 +1,22 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="../sass/index.scss"> -->
-<!-- </head> -->
-<body> -->
-    
-</body>
-</html>
-<header>
-    <div class="container">
-        <img  class="logo" src="../images/header-img/film.png" alt="logo">
-        <nav>
+
+<!-- <header class="section header">  
+    <div class="container"> -->
+        <nav class="nav">      
+            <img  class="logo" src="./images/header-img/film.png" alt="logo" width="24px" height="24px">
+            <p class="text-logo">Filmoteka</p> 
             <ul class="nav-list">
-                <li class="nav-list__item">
-                    <a href="../index.html">Home</a>
+                <li class="nav-list__item nav-list__item--current">
+                    <a href="./index.html">HOME</a>
                 </li>
                 <li class="nav-list__item">
-                    <a href="../library.html">Library</a>
+                    <a href="./library.html"> MY LIBRARY</a>
                 </li>
-            </ul>
-        </nav>
-    </div>
-</header>
+            </ul>         
+        </nav>          
+        <form class="header-form">    
+            <input class="header-form__input" type="text" placeholder="Movie search">
+            <button class="header-form__button" type="submit"><img class="sourse-svg" src="./images/header-img/search.svg" alt="search" width="12px" height="12px"></button>
+        </form>
+        <p class="error-text">Search result not successful. Enter the correct movie name and</p>
+    <!-- </div>
+</header> -->
