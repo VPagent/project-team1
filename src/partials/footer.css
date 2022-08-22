@@ -1,0 +1,43 @@
+.footer {
+background-color: #F7F7F7;
+height: 80px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.footer_text {
+    /* outline: 1px solid tomato; */
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    color: #545454;
+    text-align: center; 
+    font-size: 16px;
+    line-height: 1.18;
+    width: 500px;}
+
+
+    @media screen and (min-width: 320px) {
+    .footer {
+    height: 100px;
+    }
+
+    .footer_text{
+    font-size: 14px;
+    line-height: 1.14;
+    width: 250px;
+    }
+    }
+
+    @media screen and (min-width: 762px) {
+    .footer {
+    height: 80px;
+    }
+
+    .footer_text {
+    font-size: 16px;
+    line-height: 1.18;
+    width: 500px;
+    }
+    }
