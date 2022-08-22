@@ -8,18 +8,19 @@
   }
 
   &__item {
+
     width: 280px;
-    height: 438px;
+    height: 443px;
     margin-bottom: 20px;
 
     @media screen and(min-width: $tablet) {
-      width: calc((100% - 32px)/ 2);
+      width: 336px;
       height: 495px;
       margin-bottom: 32px;
       margin-right: 32px;
 
       &:nth-last-child(-n + 2) {
-        margin-bottom: 60px;
+        margin-bottom: 0px;
       }
 
       &:nth-child(2n) {
@@ -28,9 +29,13 @@
     }
 
     @media screen and(min-width: $desktop) {
-      width: calc((100% - 32px)/ 3);
+      width: 394px;
       height: 634px;
       margin-right: 16px;
+
+      &:nth-child(2n) {
+        margin-right: 16px;
+      }
 
       &:nth-child(3n) {
         margin-right: 0;
@@ -41,29 +46,36 @@
   &__item:last-child {
     margin-bottom: 0px;
 
-    @media screen and(min-width: $tablet) {
-      margin-bottom: 60px;
-    }
+    // @media screen and(min-width: $tablet) {
+    //   margin-bottom: 60px;
+    // }
   }
 
   &__image-wrapper {
-    width: 280px;
+    width: 100%;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     margin-bottom: 8px;
 
     @media screen and(min-width: $tablet) {
-      width: 336px;
+      width: 100%;
     }
   }
 
   &__image {
-    max-width: 100%;
+    width: 336px;
     border-radius: 5px;
     height: 398px;
     object-fit: cover;
 
     @media screen and(min-width: $tablet) {
       height: 455px;
+      width: 336px;
+    }
+
+    @media screen and(min-width: $desktop) {
+      width: 394px;
+      height: 574px;
+
     }
   }
 
@@ -92,11 +104,11 @@
     color: $text-color-2;
 
     &-genres {
-      margin-right: 2px;
+      margin-right: 5px;
     }
 
     &-year {
-      margin-left: 2px;
+      margin-left: 5px;
     }
 
     &-vote {
