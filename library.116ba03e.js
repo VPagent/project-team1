@@ -1,0 +1,2 @@
+const e=document.querySelector(".header-buttonlist"),t=document.querySelector(".js-watched"),s=document.querySelector(".js-queue");e.addEventListener("click",(function(e){if("BUTTON"!==e.target.nodeName)return;e.target.classList.add("current--btn"),e.target.classList.contains("js-watched")&&s.classList.remove("current--btn");e.target.classList.contains("js-queue")&&t.classList.remove("current--btn")}));
+//# sourceMappingURL=library.116ba03e.js.map
