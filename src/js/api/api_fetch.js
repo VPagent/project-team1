@@ -16,7 +16,7 @@ import { API_KEY, BASE_URL, TREND_URL, FIND_FILM, GET_GENRE} from './api_const'
     const fetchMovieSearch = async (text, page) => {
         try {
             const { data } = await axios.get(
-                `${FIND_FILM}?api_key=${API_KEY}&query=${text}&page=${page}`,
+                `${FIND_FILM}?api_key=${API_KEY}&query=${text}&page=${page}`
             );
             return data;
         } catch (error) {
@@ -45,3 +45,5 @@ import { API_KEY, BASE_URL, TREND_URL, FIND_FILM, GET_GENRE} from './api_const'
             console.error('Неудачный запрос' + error);
         }
     };
+
+    export {fetchMovieSearch}
