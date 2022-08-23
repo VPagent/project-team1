@@ -17,9 +17,7 @@ function onFormSubmit(event){
         searchBtn.classList.add("is-hidden")
         removeClass() 
     }
-    console.log(inputValue)
-    fetchMovieSearch(inputValue, 1)
-    
+    fetchMovieSearch(inputValue)
     form.reset()
 }
 

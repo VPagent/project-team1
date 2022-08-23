@@ -13,7 +13,7 @@ import { API_KEY, BASE_URL, TREND_URL, FIND_FILM, GET_GENRE} from './api_const'
         }
 };
     // Поиск фильма по поисковому запросу
-    const fetchMovieSearch = async (text, page) => {
+    const fetchMovieSearch = async (text, page = 1) => {
         try {
             const { data } = await axios.get(
                 `${FIND_FILM}?api_key=${API_KEY}&query=${text}&page=${page}`
