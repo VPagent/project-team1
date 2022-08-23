@@ -1,5 +1,6 @@
 import { form, onFormSubmit } from './js/header/header_value';
 import { renderMarkup } from './js/templates/renderMarkup';
+import './js/footer/footer-modal'
 import { pagination } from './js/pagination/pagination';
 import {
   getTrendData,
