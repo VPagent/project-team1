@@ -17,5 +17,5 @@ function onBtnClick(event){
         watchedBtn.classList.remove("current--btn")
     }
 }
-
+export { onBtnClick }
 
