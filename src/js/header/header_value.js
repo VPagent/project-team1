@@ -1,7 +1,11 @@
-export {onFormSubmit} 
+import {fetchMovieSearch} from '../api/api_fetch'
+import { renderMarkup } from '../templates/renderMarkup'
+import { filmGallery } from '../../index'
 const form = document.querySelector(".header-form")
 const errorText = document.querySelector(".error-text")
-console.log(form)
+const searchBtn = form[1] 
+
+console.log(searchBtn)
 
 form.addEventListener("submit", onFormSubmit)
 
@@ -9,16 +13,31 @@ function onFormSubmit(event){
     event.preventDefault()
     errorText.classList.remove("is-visible")
     const inputValue = event.target[0].value.trim("")
-
-    if(!inputValue){
-        errorText.classList.add("is-visible") 
-        removeClass() 
-    }
+    filmGallery.innerHTML = ""
     
-    
+    fetchMovieSearch(inputValue).then(data => {
+        if(!inputValue || data.results.length === 0){
+            errorText.classList.add("is-visible") 
+            searchBtn.classList.add("is-hidden")
+            filmGallery.innerHTML= markError()
+            removeClass() 
+            return
+        }
+        filmGallery.insertAdjacentHTML("beforeend", renderMarkup(data))
+    }) 
     form.reset()
 }
 
 function removeClass(){
-    setTimeout(() => errorText.classList.remove("is-visible"),2000)
+    setTimeout(() => {
+        errorText.classList.remove("is-visible")
+        searchBtn.classList.remove("is-hidden")
+    },2000)
 }
+function markError(){
+    return `<div class="error-box">
+          <h2 class="error-box__whoops">Whoops(</h2>
+          <p class="error-box__text">Search result not successful. Enter the correct movie name and</p>      
+    </div>`
+}
+export {onFormSubmit, form} 

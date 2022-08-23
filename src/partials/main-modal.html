@@ -1,23 +1,26 @@
-<div class="main-backdrop main-backdrop--hidden" data-main-modal>
+<div class="main-modal__backdrop is-hidden" data-main-modal>
   <div class="main-modal">
     <button
       class="main-modal__button--close"
       type="button"
       data-modal-main-close
     >
-      <!-- <svg width="11" height="11">
-        <use href="./images/icons.svg#icon-close-contacts"></use>
-      </svg> -->
-      x
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 30 30"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M8 8L22 22" stroke="black" stroke-width="2" />
+        <path d="M8 22L22 8" stroke="black" stroke-width="2" />
+      </svg>
     </button>
     <div class="main-modal__container">
       <div class="main-modal__preview">
-        <picture>
-          <img src="./images/test.jpg" alt="test" />
-        </picture>
+        <img src="./images/test.jpg" alt="test" width="240px" />
       </div>
       <div>
-        <p class="main-modal__title">A example of title</p>
+        <h2 class="main-modal__title">A fistful of lead</h2>
         <div class="main-modal__box">
           <div class="main-modal__features">
             <p>Vote / Votes</p>
@@ -26,28 +29,37 @@
             <p>Genre</p>
           </div>
           <div class="main-modal__values">
-            <p>123/123</p>
-            <p>1234</p>
-            <p>Lorem ipsum dolor</p>
-            <p>Lorem, ipsum</p>
+            <p>
+              <span class="main-modal__values--vote">7.3</span>
+              <span class="main-modal__values--slash">/</span>
+              <span class="main-modal__values--votes">1260</span>
+            </p>
+            <p>123.4</p>
+            <p class="main-modal__values--title">A fistful of lead</p>
+            <p class="main-modal__values--2">Western</p>
           </div>
         </div>
         <div class="main-modal__description">
           <p class="main-modal__about">about</p>
           <p class="main-modal__text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit dolores vitae nemo provident quod molestiae.
-            Perspiciatis id unde eaque repellat quidem illum porro magnam
-            laudantium quas. Dolorum, cum doloribus culpa nostrum modi
-            exercitationem a debitis aspernatur doloremque perspiciatis dolores
-            ut veritatis ullam optio totam natus quod architecto saepe quaerat
-            excepturi!
+            Four of the West’s most infamous outlaws assemble to steal a huge
+            stash of gold from the most corrupt settlement of the gold rush
+            towns. But not all goes to plan one is killed and the other three
+            escapes with bags of gold hide out in the abandoned gold mine where
+            they happen across another gang of three – who themselves were
+            planning to hit the very same bank! As tensions rise, things go from
+            bad to worse as they realise the bags of gold are filled with
+            lead... they’ve been double crossed – but by who and how?
           </p>
         </div>
-        <div class="main-modal__buttons">
-          <button class="main-modal__buttons--watched">add to Watched</button>
-          <button class="main-modal__buttons--queue">add to queue</button>
-        </div>
+        <ul class="main-modal__buttons">
+          <li>
+            <button class="main-modal__buttons--watched">add to Watched</button>
+          </li>
+          <li>
+            <button class="main-modal__buttons--queue">add to queue</button>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
