@@ -7,7 +7,7 @@ import {
   getGenre,
 } from './js/api/api_fetch';
 
-const filmGallery = document.querySelector('.film-gallery__list');
+export const filmGallery = document.querySelector('.film-gallery__list');
 export const GENRES_KEY = 'genres';
 
 async function checkGenresInLocaleStorage() {
