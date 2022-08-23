@@ -1,3 +1,4 @@
+import {onFormSubmit} from './js/header/header_value';
 import { renderMarkup } from './js/templates/renderMarkup';
 const filmGallery = document.querySelector('.film-gallery__list');
 async function fetchImages() {
