@@ -6,6 +6,8 @@ import {
   fetchMovieId,
   getGenre,
 } from './js/api/api_fetch';
+import { renderMarkupModal } from './js/mainModal/renderMarkupModal';
+import { openToggleModal } from './js/mainModal/mainModal';
 
 const filmGallery = document.querySelector('.film-gallery__list');
 export const GENRES_KEY = 'genres';
