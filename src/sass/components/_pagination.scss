@@ -1,58 +1,97 @@
-.pagination-container {
-  display: flex;
-  justify-content: center;
+.pagination__box {
   margin-top: 60px;
 }
 
-.pagination-container > li {
-  margin-right: 10px;
+.page__list {
+  display: flex;
+  justify-content: center;
 }
 
-.test-link {
+.page__figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.page__arrow {
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  background-color: $footer-background-color;
+
+  border-radius: 5px;
+
+  width: 40;
+  height: 40;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.page__item {
+  position: relative;
+
   display: inline-flex;
   justify-content: center;
   align-items: center;
 
   color: $text-color-1;
 
-  font-size: 12px;
-  line-height: 1.33;
-
   border-radius: 5px;
 
   width: 40;
   height: 40;
 
-  &:not(:last-child) {
-    margin-right: 3px;
+  cursor: pointer;
+
+  @media screen and (min-width: 767px) {
+    &:not(:last-child) {
+      margin-right: 3px;
+    }
   }
 }
 
-.is-active {
-  background-color: $accent-color;
-  color: $text-color-3;
+.page__figure--transform {
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
-.navigators {
+.page__item--is-active {
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  background-color: $accent-color;
+  color: $text-color-3;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.page__arrow--left {
+  background-image: url(/src/images/arrow-left.svg);
   background-repeat: no-repeat;
-  background-color: $footer-background-color;
   background-position: 50%;
 }
 
-.left {
-  background-image: url(/src/images/arrow-left.svg);
-}
-
-.right {
+.page__arrow--right {
   background-image: url(/src/images/arrow-right.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
 }
 
-.test-dots {
-  position: relative;
+.page__dots {
+  position: absolute;
+  top: 20%;
+  right: 30%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: $text-color-1;
 
   font-size: 12px;
@@ -60,18 +99,10 @@
 
   border-radius: 5px;
 
-  width: 40;
-  height: 40;
-
   margin-right: 3px;
 }
 
-.dots {
-  position: absolute;
-  top: 20%;
-}
-
-.hidden-navigators {
+.page__item--hidden {
   @media screen and (max-width: 767px) {
     display: none;
   }

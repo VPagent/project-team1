@@ -1,5 +1,6 @@
 import { form, onFormSubmit } from './js/header/header_value';
 import { renderMarkup } from './js/templates/renderMarkup';
+import { pagination } from './js/pagination/pagination';
 import {
   getTrendData,
   fetchMovieSearch,
@@ -23,7 +24,7 @@ if (!localStorage.getItem(GENRES_KEY)) {
 }
 getTrendData()
   .then(response => {
-    // pagination(response.page, response.total_pages);
     filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
+    pagination(response.page, response.total_pages);
   })
   .catch(console.error);

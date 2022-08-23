@@ -1,51 +1,53 @@
 export { pagination };
-// import search froms
-import { renderMarkup } from '../templates/renderMarkup';
-import fetchImages from '../../index';
 
-const paginationContainer = document.querySelector('.pagination-container');
+import { renderMarkup } from '../templates/renderMarkup';
+import { getTrendData } from '../api/api_fetch';
+import { filmGallery } from '../../index';
+
+const paginationContainer = document.querySelector('.page__list');
+
 let globalCurrentPage = 0;
 let globalAllPages = 0;
-// export default
+
 function pagination(currentPage, allPages) {
   let markup = '';
-  //   let activePage = '';
   let beforeTwoPage = currentPage - 2;
   let beforePage = currentPage - 1;
   let afterPage = currentPage + 1;
   let afterTwoPage = currentPage + 2;
+
   globalCurrentPage = currentPage;
   globalAllPages = allPages;
 
   if (currentPage > 1) {
-    markup += `<li>&#129144;</li>`;
+    markup += `<li class="page__item"><span class="page__arrow page__arrow--left"></span></li>`;
   }
   if (currentPage > 1) {
-    markup += `<li>1</li>`;
+    markup += `<li class="page__item page__item--hidden"><span class="page__figure page__figure--transform">1</span></li>`;
   }
   if (currentPage > 4) {
-    markup += `<li>...</li>`;
+    markup += `<li class="page__item page__item--hidden"><span class="page__dots">...</span></li>`;
   }
   if (currentPage > 3) {
-    markup += `<li>${beforeTwoPage}</li>`;
+    markup += `<li class="page__item"><span class="page__figure page__figure--transform">${beforeTwoPage}</span></li>`;
   }
   if (currentPage > 2) {
-    markup += `<li>${beforePage}</li>`;
+    markup += `<li class="page__item"><span class="page__figure page__figure--transform">${beforePage}</span></li>`;
   }
-  markup += `<li><b>${currentPage}</b></li>`;
+  markup += `<li class="page__item page__item--is-active"><span class="page__figure">${currentPage}</span></li>`;
 
   if (allPages - 1 > currentPage) {
-    markup += `<li>${afterPage}</li>`;
+    markup += `<li class="page__item"><span class="page__figure page__figure--transform">${afterPage}</span></li>`;
   }
   if (allPages - 2 > currentPage) {
-    markup += `<li>${afterTwoPage}</li>`;
+    markup += `<li class="page__item"><span class="page__figure page__figure--transform">${afterTwoPage}</span></li>`;
   }
   if (allPages - 3 > currentPage) {
-    markup += `<li>...</li>`;
+    markup += `<li class="page__item page__item--hidden"><span class="page__dots">...</span></li>`;
   }
   if (allPages > currentPage) {
-    markup += `<li>${allPages}</li>`;
-    markup += `<li>&#129146;</li>`;
+    markup += `<li class="page__item page__item--hidden"><span class="page__figure page__figure--transform">${allPages}</span></li>`;
+    markup += `<li class="page__item arrow"><span class="page__arrow page__arrow--right"></span></li>`;
   }
 
   paginationContainer.innerHTML = markup;
@@ -54,26 +56,33 @@ function pagination(currentPage, allPages) {
 paginationContainer.addEventListener('click', onClickEvent);
 
 function onClickEvent(event) {
-  if (event.target.nodeName !== 'LI') {
+  console.log(event.target);
+  if (event.target.nodeName !== 'SPAN') {
     return;
   }
-  if (event.target.textContent === '🡸') {
-    fetchImages((globalCurrentPage -= 1)).then(data => renderMarkup(data));
+  if (event.target.classList.contains('page__arrow--left')) {
+    getTrendData((globalCurrentPage -= 1)).then(data => {
+      filmGallery.innerHTML = '';
+      filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+      pagination(data.page, data.total_pages);
+    });
     return;
   }
-  if (event.target.textContent === '🡺') {
-    //   pagination((globalCurrentPage += 1));
-    fetchImages((globalCurrentPage += 1)).then(data => renderMarkup(data));
+  if (event.target.classList.contains('page__arrow--right')) {
+    getTrendData((globalCurrentPage += 1)).then(data => {
+      filmGallery.innerHTML = '';
+      filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+      pagination(data.page, data.total_pages);
+    });
     return;
   }
   if (event.target.textContent === '...') {
     return;
   }
   const page = event.target.textContent;
-  fetchImages(page).then(data => {
-    // console.log(data);
-    renderMarkup(data);
+  getTrendData(page).then(data => {
+    filmGallery.innerHTML = '';
+    filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
     pagination(data.page, data.total_pages);
   });
-  //   (page);
 }
