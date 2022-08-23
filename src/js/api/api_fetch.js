@@ -19,8 +19,9 @@ export const getTrendData = async (page = 1) => {
   }
 };
 
+
 // Поиск фильма по поисковому запросу
-export const fetchMovieSearch = async (text, page) => {
+export const fetchMovieSearch = async (text, page = 1) => {
   try {
     const { data } = await axios.get(
       `${FIND_FILM}?api_key=${API_KEY}&query=${text}&page=${page}`
@@ -29,6 +30,7 @@ export const fetchMovieSearch = async (text, page) => {
   } catch (error) {
     console.error('Неудачный запрос' + error);
   }
+
 };
 
 // Поиск фильма по id
