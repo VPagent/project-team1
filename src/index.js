@@ -1,5 +1,6 @@
 import {onFormSubmit} from './js/header/header_value';
 import { renderMarkup } from './js/templates/renderMarkup';
+import './js/footer/footer-modal'
 const filmGallery = document.querySelector('.film-gallery__list');
 async function fetchImages() {
   const response = await fetch(
