@@ -12,6 +12,7 @@ form.addEventListener("submit", onFormSubmit)
 function onFormSubmit(event){
     event.preventDefault()
     errorText.classList.remove("is-visible")
+    localStorage.removeItem("films")
     const inputValue = event.target[0].value.trim("")
     filmGallery.innerHTML = ""
     
@@ -24,6 +25,8 @@ function onFormSubmit(event){
             return
         }
         filmGallery.insertAdjacentHTML("beforeend", renderMarkup(data))
+        console.log(data)
+        addLocalStore(data)
     }) 
     form.reset()
 }
@@ -40,4 +43,13 @@ function markError(){
           <p class="error-box__text">Search result not successful. Enter the correct movie name and</p>      
     </div>`
 }
-export {onFormSubmit, form} 
+function addLocalStore(data){
+    let localObj = []
+
+    data.results.forEach(elem => {
+        localObj.push(elem)
+    });
+
+    localStorage.setItem("films", JSON.stringify(localObj))
+}
+export {onFormSubmit, addLocalStore, form} 

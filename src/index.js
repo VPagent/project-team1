@@ -1,4 +1,4 @@
-import { form, onFormSubmit } from './js/header/header_value';
+import { form, onFormSubmit, addLocalStore } from './js/header/header_value';
 import { renderMarkup } from './js/templates/renderMarkup';
 import './js/footer/footer-modal'
 import { pagination } from './js/pagination/pagination';
@@ -27,5 +27,6 @@ getTrendData()
   .then(response => {
     filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
     pagination(response.page, response.total_pages);
+    addLocalStore(response)
   })
   .catch(console.error);
