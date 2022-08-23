@@ -19,9 +19,9 @@ async function checkGenresInLocaleStorage() {
 if (!localStorage.getItem(GENRES_KEY)) {
   checkGenresInLocaleStorage();
 }
-
 getTrendData()
   .then(response => {
+    // pagination(response.page, response.total_pages);
     filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
   })
   .catch(console.error);
