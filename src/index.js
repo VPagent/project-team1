@@ -1,5 +1,6 @@
 import { form, onFormSubmit } from './js/header/header_value';
 import { renderMarkup } from './js/templates/renderMarkup';
+import { pagination } from './js/pagination/pagination';
 import {
   getTrendData,
   fetchMovieSearch,
@@ -7,7 +8,7 @@ import {
   getGenre,
 } from './js/api/api_fetch';
 
-const filmGallery = document.querySelector('.film-gallery__list');
+export const filmGallery = document.querySelector('.film-gallery__list');
 export const GENRES_KEY = 'genres';
 
 async function checkGenresInLocaleStorage() {
@@ -21,7 +22,7 @@ if (!localStorage.getItem(GENRES_KEY)) {
 }
 getTrendData()
   .then(response => {
-    // pagination(response.page, response.total_pages);
     filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
+    pagination(response.page, response.total_pages);
   })
   .catch(console.error);
