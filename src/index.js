@@ -1,4 +1,4 @@
-import { onFormSubmit } from './js/header/header_value';
+import { form, onFormSubmit } from './js/header/header_value';
 import { renderMarkup } from './js/templates/renderMarkup';
 import axios from 'axios';
 import './js/api/api_fetch';
@@ -17,14 +17,14 @@ async function checkGenresInLocaleStorage() {
   const { genres } = await getGenre();
   console.log(genres);
   localStorage.setItem(GENRES_KEY, JSON.stringify(genres));
-}
 
-if (!localStorage.getItem(GENRES_KEY)) {
-  checkGenresInLocaleStorage();
-}
+  if (!localStorage.getItem(GENRES_KEY)) {
+    checkGenresInLocaleStorage();
+  }
 
-getTrendData()
-  .then(response => {
-    filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
-  })
-  .catch(console.error);
+  getTrendData()
+    .then(response => {
+      filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
+    })
+    .catch(console.error);
+}

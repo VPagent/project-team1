@@ -18,6 +18,7 @@ export const getTrendData = async (page = 1) => {
     console.error('Неудачный запрос' + error);
   }
 };
+
 // Поиск фильма по поисковому запросу
 export const fetchMovieSearch = async (text, page) => {
   try {
@@ -29,6 +30,7 @@ export const fetchMovieSearch = async (text, page) => {
     console.error('Неудачный запрос' + error);
   }
 };
+
 // Поиск фильма по id
 export const fetchMovieId = async id => {
   try {
@@ -38,6 +40,7 @@ export const fetchMovieId = async id => {
     console.error('Неудачный запрос' + error);
   }
 };
+
 // Список всех жанров
 export const getGenre = async () => {
   try {
