@@ -1,4 +1,6 @@
-import { GENRES_KEY } from '../../index';
+// import { GENRES_KEY } from '../../index';
+
+const GENRES_KEY = 'genres';
 
 export function matchGenresById(genresIds) {
   const localeGenres = localStorage.getItem(GENRES_KEY);
