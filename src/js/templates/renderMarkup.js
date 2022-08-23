@@ -1,3 +1,4 @@
+import { matchGenresById } from '../findGenres/findGenres';
 export function renderMarkup(data) {
   const markup = data.results
     .map(
@@ -16,9 +17,11 @@ export function renderMarkup(data) {
                         alt="${title || name}" width ="394" height ="336"/>
                   </div>
                   <div class="film-gallery__info-wrapper">
-                    <p class="film-gallery__name">${name || title}</p>
+                    <h3 class="film-gallery__name">${name || title}</h3>
                     <p class="film-gallery__info">
-                      <span class="film-gallery__info-genres">${genre_ids}</span>
+                      <span class="film-gallery__info-genres">${matchGenresById(
+                        genre_ids
+                      )}</span>
                       |
                       <span class="film-gallery__info-year">${release_date.slice(
                         0,
