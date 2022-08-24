@@ -29,6 +29,5 @@ getTrendData()
     localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(response.results));
     filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
     pagination(response.page, response.total_pages);
-    addLocalStore(response);
   })
   .catch(console.error);
