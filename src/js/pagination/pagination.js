@@ -4,6 +4,7 @@ import { renderMarkup } from '../templates/renderMarkup';
 import { getTrendData } from '../api/api_fetch';
 import { fetchMovieSearch } from '../api/api_fetch';
 import { filmGallery } from '../../index';
+import { hideSpinner } from '../../index';
 
 const paginationContainer = document.querySelector('.page__list');
 
@@ -70,6 +71,7 @@ function onClickEvent(event) {
         localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
         filmGallery.innerHTML = '';
         filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+        hideSpinner();
         pagination(data.page, data.total_pages);
       });
       return;
@@ -78,6 +80,7 @@ function onClickEvent(event) {
       localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
       filmGallery.innerHTML = '';
       filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+      hideSpinner();
       pagination(data.page, data.total_pages);
     });
     return;
@@ -88,6 +91,7 @@ function onClickEvent(event) {
         localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
         filmGallery.innerHTML = '';
         filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+        hideSpinner();
         pagination(data.page, data.total_pages);
       });
       return;
@@ -96,6 +100,7 @@ function onClickEvent(event) {
       localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
       filmGallery.innerHTML = '';
       filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+      hideSpinner();
       pagination(data.page, data.total_pages);
     });
     return;
@@ -111,6 +116,7 @@ function onClickEvent(event) {
       localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
       filmGallery.innerHTML = '';
       filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+      hideSpinner();
       pagination(data.page, data.total_pages);
     });
     return;
@@ -119,6 +125,7 @@ function onClickEvent(event) {
       localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
       filmGallery.innerHTML = '';
       filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+      hideSpinner();
       pagination(data.page, data.total_pages);
     });
     return;

@@ -7,9 +7,15 @@ import {
   GET_GENRE,
 } from './api_const';
 
+import { showSpinner } from '../../index';
+
+const spinnerDiv = document.querySelector('.loader');
+
 // Получение полной информации о трендах
 export const getTrendData = async (page = 1) => {
   try {
+    showSpinner();
+    // spinnerDiv.style.display = 'block';
     const { data } = await axios.get(
       `${TREND_URL}?api_key=${API_KEY}&page=${page}`
     );
@@ -19,10 +25,11 @@ export const getTrendData = async (page = 1) => {
   }
 };
 
-
 // Поиск фильма по поисковому запросу
 export const fetchMovieSearch = async (text, page = 1) => {
   try {
+    showSpinner();
+    // spinnerDiv.style.display = 'block';
     const { data } = await axios.get(
       `${FIND_FILM}?api_key=${API_KEY}&query=${text}&page=${page}`
     );
@@ -30,7 +37,6 @@ export const fetchMovieSearch = async (text, page = 1) => {
   } catch (error) {
     console.error('Неудачный запрос' + error);
   }
-
 };
 
 // Поиск фильма по id
