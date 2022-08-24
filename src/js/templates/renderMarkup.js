@@ -1,4 +1,5 @@
 import { matchGenresById } from '../findGenres/findGenres';
+import { pagination } from '../pagination/pagination';
 export function renderMarkup(data) {
   const markup = data.results
     .map(
@@ -34,5 +35,6 @@ export function renderMarkup(data) {
       }
     )
     .join('');
+  pagination(data.page, data.total_pages);
   return markup;
 }

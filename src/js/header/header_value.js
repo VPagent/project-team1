@@ -3,6 +3,7 @@ import { renderMarkup } from '../templates/renderMarkup';
 import { filmGallery } from '../../index';
 const form = document.querySelector('.header-form');
 import { pagination } from '../pagination/pagination';
+
 const errorText = document.querySelector('.error-text');
 const searchBtn = form[1];
 const CURRENT_FILMS_KEY = 'current films';
@@ -17,6 +18,7 @@ function onFormSubmit(event) {
   filmGallery.innerHTML = '';
 
   fetchMovieSearch(inputValue).then(data => {
+    console.log(data);
 
     if (!inputValue || data.results.length === 0) {
       errorText.classList.add('is-visible');
@@ -27,13 +29,10 @@ function onFormSubmit(event) {
     }
 
     filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
-    filmGallery.insertAdjacentHTML(
-      'beforeend',
-      pagination(data.page, data.total_pages, inputValue)
-    );
-    localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
-    filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+    // pagination(data.page, data.total_pages);
 
+    localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
+    localStorage.setItem('INPUT_VALUE', JSON.stringify(inputValue));
   });
   form.reset();
 }
