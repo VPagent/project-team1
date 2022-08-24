@@ -8,6 +8,7 @@ const paginationContainer = document.querySelector('.page__list');
 
 let globalCurrentPage = 0;
 let globalAllPages = 0;
+const CURRENT_FILMS_KEY = 'current films';
 
 function pagination(currentPage, allPages) {
   let markup = '';
@@ -62,6 +63,7 @@ function onClickEvent(event) {
   }
   if (event.target.classList.contains('page__arrow--left')) {
     getTrendData((globalCurrentPage -= 1)).then(data => {
+      localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
       filmGallery.innerHTML = '';
       filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
       pagination(data.page, data.total_pages);
@@ -70,6 +72,7 @@ function onClickEvent(event) {
   }
   if (event.target.classList.contains('page__arrow--right')) {
     getTrendData((globalCurrentPage += 1)).then(data => {
+      localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
       filmGallery.innerHTML = '';
       filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
       pagination(data.page, data.total_pages);
@@ -81,6 +84,7 @@ function onClickEvent(event) {
   }
   const page = event.target.textContent;
   getTrendData(page).then(data => {
+    localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
     filmGallery.innerHTML = '';
     filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
     pagination(data.page, data.total_pages);

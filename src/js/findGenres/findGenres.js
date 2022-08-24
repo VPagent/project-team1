@@ -16,7 +16,7 @@ function formateGenresToString(genresArray) {
   if (genresArray.length > 3) {
     return `${genresArray[0]}, ${genresArray[1]} and ${
       genresArray.length - 2
-    } Other`;
+    } Others`;
   }
   return genresArray.join(', ');
 }

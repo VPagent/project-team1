@@ -1,6 +1,6 @@
 import { form, onFormSubmit } from './js/header/header_value';
 import { renderMarkup } from './js/templates/renderMarkup';
-import './js/footer/footer-modal'
+import './js/footer/footer-modal';
 import { pagination } from './js/pagination/pagination';
 import {
   getTrendData,
@@ -13,6 +13,7 @@ import { openToggleModal } from './js/mainModal/mainModal';
 
 export const filmGallery = document.querySelector('.film-gallery__list');
 export const GENRES_KEY = 'genres';
+const CURRENT_FILMS_KEY = 'current films';
 
 async function checkGenresInLocaleStorage() {
   const { genres } = await getGenre();
@@ -25,6 +26,7 @@ if (!localStorage.getItem(GENRES_KEY)) {
 }
 getTrendData()
   .then(response => {
+    localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(response.results));
     filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
     pagination(response.page, response.total_pages);
   })

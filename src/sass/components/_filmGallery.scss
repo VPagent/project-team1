@@ -31,7 +31,7 @@
 
     @media screen and(min-width: $desktop) {
       width: 394px;
-      height: 634px;
+      height: 640px;
       margin-right: 16px;
 
       &:nth-child(2n) {
@@ -46,14 +46,14 @@
         margin-right: 0;
       }
     }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__item:last-child {
     margin-bottom: 0px;
-
-    // @media screen and(min-width: $tablet) {
-    //   margin-bottom: 60px;
-    // }
   }
 
   &__image-wrapper {
@@ -80,7 +80,6 @@
     @media screen and(min-width: $desktop) {
       width: 394px;
       height: 574px;
-
     }
   }
 
