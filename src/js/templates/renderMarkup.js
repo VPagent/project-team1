@@ -23,7 +23,9 @@ export function renderMarkup(data) {
         return `<li class="film-gallery__item" id="${id}">
                   <div class="film-gallery__image-wrapper">
                     <img class="film-gallery__image" src="${POSTER_IMG_URL}"
-                        alt="${title || name}" width ="394" height ="336"/>
+                        alt="${
+                          title || name
+                        }" width ="394" height ="336" loading="lazy"/>
                   </div>
                   <div class="film-gallery__info-wrapper">
                     <h3 class="film-gallery__name">${name || title}</h3>
