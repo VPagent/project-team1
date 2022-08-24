@@ -11,6 +11,7 @@ import {
 } from './js/api/api_fetch';
 import { renderMarkupModal } from './js/mainModal/renderMarkupModal';
 import './js/mainModal/mainModal';
+import './js/toggler/theme';
 
 export const filmGallery = document.querySelector('.film-gallery__list');
 export const GENRES_KEY = 'genres';
