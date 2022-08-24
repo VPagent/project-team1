@@ -1,3 +1,4 @@
+import 'animate.css';
 import { form, onFormSubmit, addLocalStore } from './js/header/header_value';
 import { renderMarkup } from './js/templates/renderMarkup';
 import './js/footer/footer-modal';
@@ -26,11 +27,12 @@ if (!localStorage.getItem(GENRES_KEY)) {
   checkGenresInLocaleStorage();
 }
 getTrendData()
-  .then(response => {
-    console.log(response);
-    localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(response.results));
-    localStorage.removeItem('INPUT_VALUE');
-    filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
-    // pagination(response.page, response.total_pages);
-  })
-  .catch(console.error);
+.then(response => {
+  // console.log(response);
+  localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(response.results));
+  localStorage.removeItem('INPUT_VALUE');
+  filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
+  // pagination(response.page, response.total_pages);
+})
+.catch(console.error);
+

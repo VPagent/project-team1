@@ -11,7 +11,8 @@ footer {
   justify-content: center;
 }
 
-.footer_text {
+.footer_text,
+.open-pop-up {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -19,9 +20,18 @@ footer {
   text-align: center;
   font-size: 16px;
   line-height: 1.18;
-  // width: 500px;
 }
 
+.open-pop-up {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  color: #545454;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.18;
+  text-decoration-line: underline;
+}
 .footer_icon {
   margin-left: 5px;
   margin-right: 5px;
@@ -52,6 +62,14 @@ footer {
   }
 }
 
+.animate__heartBeat {
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: heartBeat infinite; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+
 .footer a {
   color: inherit;
+
 }
