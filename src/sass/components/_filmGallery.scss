@@ -1,6 +1,5 @@
 .film-gallery {
   &__list {
-
     @media screen and(min-width: $tablet) {
       display: flex;
       flex-wrap: wrap;
@@ -9,9 +8,15 @@
 
   &__item {
 
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
     width: 280px;
     height: 443px;
     margin-bottom: 20px;
+
+    &:hover {
+      transform: scale(1.05);
+    }
 
     @media screen and(min-width: $tablet) {
       width: 336px;
@@ -26,7 +31,6 @@
       &:nth-child(2n) {
         margin-right: 0;
       }
-
     }
 
     @media screen and(min-width: $desktop) {
@@ -117,6 +121,8 @@
 
     &-vote {
       display: none;
+
+
       // display: flex;
       // align-items: center;
       // justify-content: center;
@@ -134,5 +140,4 @@
 
     }
   }
-
 }

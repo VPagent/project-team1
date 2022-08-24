@@ -60,8 +60,7 @@ function pagination(currentPage, allPages) {
 paginationContainer.addEventListener('click', onClickEvent);
 
 function onClickEvent(event) {
-  let valueFromInput = localStorage.getItem('INPUT_VALUE');
-  console.log(valueFromInput);
+  let valueFromInput = JSON.parse(localStorage.getItem('INPUT_VALUE'));
   if (event.target.nodeName !== 'SPAN') {
     return;
   }
