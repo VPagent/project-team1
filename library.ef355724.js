@@ -1,2 +1,0 @@
-!function(){var e=document.querySelector(".header-buttonlist"),t=document.querySelector(".js-watched"),r=document.querySelector(".js-queue");e.addEventListener("click",(function(e){if("BUTTON"!==e.target.nodeName)return;e.target.classList.add("current--btn"),e.target.classList.contains("js-watched")&&r.classList.remove("current--btn");e.target.classList.contains("js-queue")&&t.classList.remove("current--btn")}))}();
-//# sourceMappingURL=library.ef355724.js.map
