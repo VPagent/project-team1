@@ -10,7 +10,7 @@ let globalCurrentPage = 0;
 let globalAllPages = 0;
 const CURRENT_FILMS_KEY = 'current films';
 
-function pagination(currentPage, allPages) {
+function pagination(currentPage, allPages, inputValue) {
   let markup = '';
   let beforeTwoPage = currentPage - 2;
   let beforePage = currentPage - 1;
