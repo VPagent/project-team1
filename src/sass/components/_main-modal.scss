@@ -67,20 +67,20 @@ body.overflow {
   margin-bottom: 20px;
 
   @media screen and (min-width: $tablet) {
-    min-width: 264px;
-    min-height: 375px;
+    max-width: 264px;
+    max-height: 375px;
     margin-right: 68px;
   }
 
   @media screen and (min-width: 1024px) {
-    min-width: 375px;
-    min-height: 478px;
+    max-width: 375px;
+    max-height: 478px;
     margin-right: 16px;
   }
 }
 
 .main-modal__preview img {
-  width: 100%;
+  max-width: 100%;
 }
 
 .main-modal__title {

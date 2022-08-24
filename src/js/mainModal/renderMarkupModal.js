@@ -1,20 +1,18 @@
-export function renderMarkupModal(data) {
-  const markup = data.results
-    .map(
-      ({
-        poster_path,
-        title,
-        name,
-        vote_average,
-        vote_count,
-        genre_ids,
-        overview,
-      }) => {
-        return `<div class="main-modal__container">
-                      <div class="main-modal__preview">
+import { matchGenresById } from '../findGenres/findGenres';
+export function renderMarkupModal({
+  poster_path,
+  title,
+  name,
+  vote_average,
+  vote_count,
+  popularity,
+  genre_ids,
+  overview,
+}) {
+  return `            <div class="main-modal__preview">
                         <img src="https://image.tmdb.org/t/p/original${poster_path}" alt="${
-          title || name
-        }" width="240" />
+    title || name
+  }" width="240" />
                       </div>
                       <div>
                         <h2 class="main-modal__title">${title}</h2>
@@ -33,7 +31,9 @@ export function renderMarkupModal(data) {
                             </p>
                             <p>${popularity}</p>
                             <p class="main-modal__values--title">${title}</p>
-                            <p class="main-modal__values--2">${genre_ids}</p>
+                            <p class="main-modal__values--2">${matchGenresById(
+                              genre_ids
+                            )}</p>
                           </div>
                         </div>
                         <div class="main-modal__description">
@@ -48,10 +48,5 @@ export function renderMarkupModal(data) {
                             <button class="main-modal__buttons--queue">add to queue</button>
                           </li>
                         </ul>
-                      </div>
-                    </div>`;
-      }
-    )
-    .join('');
-  return markup;
+                      </div>`;
 }
