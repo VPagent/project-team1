@@ -1,20 +1,17 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 footer {
+  margin-top: auto;
   background-color: #f7f7f7;
-  // height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
 .footer_text {
-  /* outline: 1px solid tomato; */
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
