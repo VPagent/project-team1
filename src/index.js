@@ -13,6 +13,7 @@ import './js/mainModal/mainModal';
 
 export const filmGallery = document.querySelector('.film-gallery__list');
 export const GENRES_KEY = 'genres';
+const CURRENT_FILMS_KEY = 'current films';
 
 async function checkGenresInLocaleStorage() {
   const { genres } = await getGenre();
@@ -25,8 +26,8 @@ if (!localStorage.getItem(GENRES_KEY)) {
 }
 getTrendData()
   .then(response => {
+    localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(response.results));
     filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
     pagination(response.page, response.total_pages);
-    addLocalStore(response);
   })
   .catch(console.error);
