@@ -42,4 +42,5 @@ function markError() {
           <p class="error-box__text">Search result not successful. Enter the correct movie name and</p>
     </div>`;
 }
+
 export { onFormSubmit, form };

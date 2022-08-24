@@ -10,16 +10,31 @@
         background-image: url(../images/header-img/library/mobile/rectangle1.png);
         background-position: center;
         background-size: cover;
+        @media screen and (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx){
+            background-image: url(../images/header-img/library/mobile/mobile2xj.jpg);        
+        } 
     }
 
     color: $text-color-3;
     @media screen and (min-width: 768px){
         background-image: url(../images/header-img/library/tablet/tablet-ectangle1.png);
         padding-top: 0;
+        @media screen and (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx){
+            background-image: url(../images/header-img/library/tablet/tablet2x.jpg);        
+        } 
         
     }
     @media screen and (min-width: 1280px){
         background-image: url(../images/header-img/library/desktop/desktop-rectangle.png);
+        @media screen and (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx){
+            background-image: url(../images/header-img/library/desktop/desktop2x.jpg);        
+        } 
     }
 }
 .nav{
