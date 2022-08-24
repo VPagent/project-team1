@@ -1,7 +1,7 @@
 import { form, onFormSubmit, addLocalStore } from './js/header/header_value';
 import { renderMarkup } from './js/templates/renderMarkup';
 import './js/footer/footer-modal';
-import { pagination } from './js/pagination/pagination';
+import { pagination, valueFromInput } from './js/pagination/pagination';
 import {
   getTrendData,
   fetchMovieSearch,
@@ -27,7 +27,8 @@ if (!localStorage.getItem(GENRES_KEY)) {
 getTrendData()
   .then(response => {
     localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(response.results));
+    localStorage.removeItem('INPUT_VALUE');
     filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
-    pagination(response.page, response.total_pages);
+    // pagination(response.page, response.total_pages);
   })
   .catch(console.error);
