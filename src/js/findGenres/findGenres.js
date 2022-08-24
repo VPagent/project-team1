@@ -1,8 +1,9 @@
-// import { GENRES_KEY } from '../../index';
-
 const GENRES_KEY = 'genres';
 
 export function matchGenresById(genresIds) {
+  if (!genresIds) {
+    return '';
+  }
   const localeGenres = localStorage.getItem(GENRES_KEY);
   const parsedGenres = JSON.parse(localeGenres);
   const filteredGenres = parsedGenres
