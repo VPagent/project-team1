@@ -32,7 +32,6 @@ function onFormSubmit(event) {
       pagination(data.page, data.total_pages, inputValue)
     );
     localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
-    filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
 
   });
   form.reset();
