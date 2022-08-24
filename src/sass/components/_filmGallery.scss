@@ -1,6 +1,5 @@
 .film-gallery {
   &__list {
-
     @media screen and(min-width: $tablet) {
       display: flex;
       flex-wrap: wrap;
@@ -8,7 +7,6 @@
   }
 
   &__item {
-
     width: 280px;
     height: 443px;
     margin-bottom: 20px;
@@ -26,7 +24,6 @@
       &:nth-child(2n) {
         margin-right: 0;
       }
-
     }
 
     @media screen and(min-width: $desktop) {
@@ -117,22 +114,6 @@
 
     &-vote {
       display: none;
-      // display: flex;
-      // align-items: center;
-      // justify-content: center;
-      // text-align: center;
-      // text-transform: uppercase;
-      // margin-left: 9px;
-      // width: 36px;
-      // height: 16px;
-      // border-radius: 5px;
-
-      // background-color: $text-color-2;
-      // color: $text-color-3;
-      // font-size: inherit;
-      // line-height: 1.16;
-
     }
   }
-
 }

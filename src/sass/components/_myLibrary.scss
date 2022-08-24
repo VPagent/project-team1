@@ -1,0 +1,156 @@
+.film-myLibrary {
+  &__list {
+    @media screen and(min-width: $tablet) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item {
+    width: 280px;
+    height: 443px;
+    margin-bottom: 20px;
+
+    @media screen and(min-width: $tablet) {
+      width: 336px;
+      height: 495px;
+      margin-bottom: 32px;
+      margin-right: 32px;
+
+      &:nth-last-child(-n + 2) {
+        margin-bottom: 0px;
+      }
+
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+
+    @media screen and(min-width: $desktop) {
+      width: 394px;
+      height: 640px;
+      margin-right: 16px;
+
+      &:nth-child(2n) {
+        margin-right: 16px;
+      }
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__item:last-child {
+    margin-bottom: 0px;
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin-bottom: 8px;
+
+    @media screen and(min-width: $tablet) {
+      width: 100%;
+    }
+  }
+
+  &__image {
+    width: 336px;
+    border-radius: 5px;
+    height: 398px;
+    object-fit: cover;
+
+    @media screen and(min-width: $tablet) {
+      height: 455px;
+      width: 336px;
+    }
+
+    @media screen and(min-width: $desktop) {
+      width: 394px;
+      height: 574px;
+    }
+  }
+
+  &__info-wrapper {
+    font-size: 12px;
+    line-height: 1.33;
+
+    @media screen and(min-width: $desktop) {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  &__name {
+    font-size: inherit;
+    line-height: inherit;
+    text-transform: uppercase;
+    color: $text-color-1;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: flex-start;
+    font-size: inherit;
+    line-height: inherit;
+    color: $text-color-2;
+
+    &-genres {
+      margin-right: 5px;
+    }
+
+    &-year {
+      margin-left: 5px;
+    }
+
+    &-rang {
+      //   display: none;
+      //   display: flex;
+      //   align-items: center;
+      //   justify-content: center;
+      //   text-align: center;
+      //   text-transform: uppercase;
+      //   margin-left: 9px;
+      //   width: 36px;
+      //   height: 16px;
+      //   border-radius: 5px;
+
+      //   background-color: $text-color-2;
+      //   color: $text-color-3;
+      //   font-size: inherit;
+      //   line-height: 1.16;
+    }
+  }
+}
+
+.film-gallery__info-rang {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  margin-left: 9px;
+  width: 36px;
+  height: 16px;
+  border-radius: 5px;
+
+  background-color: $text-color-2;
+  color: $text-color-3;
+  font-size: 12px;
+  line-height: 1.16;
+
+  @media screen and (min-width: $desktop) {
+    width: 40px;
+    height: 20px;
+    margin-top: 2px;
+  }
+}

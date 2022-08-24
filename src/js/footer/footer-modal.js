@@ -20,16 +20,20 @@ closePopUp.addEventListener('click', () => {
   body.classList.remove('disable-scroll');
 });
 
-body.addEventListener('keyup', e => {
-  if (e.code === 'Escape') {
-    popUp.classList.remove('open');
-    body.classList.remove('disable-scroll');
-  }
-});
 
-window.addEventListener('click', (e) => {
-  if (e.target == popUpContainer) {
-    popUp.classList.remove('open');
-    body.classList.remove('disable-scroll');
-  }
-})
+  body.addEventListener('keyup', e => {
+    if (e.code === 'Escape') {
+      popUp.classList.remove('open');
+      body.classList.remove('disable-scroll');
+    }
+  });
+
+
+function addWindow() {
+  window.addEventListener('click', (e) => {
+    if (e.target == popUpContainer) {
+      popUp.classList.remove('open');
+      body.classList.remove('disable-scroll');
+    }
+  })
+}
