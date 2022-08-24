@@ -2,15 +2,17 @@ export { pagination };
 
 import { renderMarkup } from '../templates/renderMarkup';
 import { getTrendData } from '../api/api_fetch';
+import { fetchMovieSearch } from '../api/api_fetch';
 import { filmGallery } from '../../index';
 
 const paginationContainer = document.querySelector('.page__list');
 
 let globalCurrentPage = 0;
 let globalAllPages = 0;
+
 const CURRENT_FILMS_KEY = 'current films';
 
-function pagination(currentPage, allPages, inputValue) {
+function pagination(currentPage, allPages) {
   let markup = '';
   let beforeTwoPage = currentPage - 2;
   let beforePage = currentPage - 1;
@@ -57,11 +59,21 @@ function pagination(currentPage, allPages, inputValue) {
 paginationContainer.addEventListener('click', onClickEvent);
 
 function onClickEvent(event) {
-  console.log(event.target);
+  let valueFromInput = localStorage.getItem('INPUT_VALUE');
+  console.log(valueFromInput);
   if (event.target.nodeName !== 'SPAN') {
     return;
   }
   if (event.target.classList.contains('page__arrow--left')) {
+    if (valueFromInput) {
+      fetchMovieSearch(valueFromInput, (globalCurrentPage -= 1)).then(data => {
+        localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
+        filmGallery.innerHTML = '';
+        filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+        pagination(data.page, data.total_pages);
+      });
+      return;
+    }
     getTrendData((globalCurrentPage -= 1)).then(data => {
       localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
       filmGallery.innerHTML = '';
@@ -71,6 +83,15 @@ function onClickEvent(event) {
     return;
   }
   if (event.target.classList.contains('page__arrow--right')) {
+    if (valueFromInput) {
+      fetchMovieSearch(valueFromInput, (globalCurrentPage += 1)).then(data => {
+        localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
+        filmGallery.innerHTML = '';
+        filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+        pagination(data.page, data.total_pages);
+      });
+      return;
+    }
     getTrendData((globalCurrentPage += 1)).then(data => {
       localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
       filmGallery.innerHTML = '';
@@ -83,10 +104,23 @@ function onClickEvent(event) {
     return;
   }
   const page = event.target.textContent;
-  getTrendData(page).then(data => {
-    localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
-    filmGallery.innerHTML = '';
-    filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
-    pagination(data.page, data.total_pages);
-  });
+
+  if (valueFromInput) {
+    fetchMovieSearch(valueFromInput, page).then(data => {
+      console.log(data);
+      localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
+      filmGallery.innerHTML = '';
+      filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+      pagination(data.page, data.total_pages);
+    });
+    return;
+  } else {
+    getTrendData(page).then(data => {
+      localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
+      filmGallery.innerHTML = '';
+      filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
+      pagination(data.page, data.total_pages);
+    });
+    return;
+  }
 }
