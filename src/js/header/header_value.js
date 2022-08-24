@@ -7,7 +7,6 @@ import { pagination } from '../pagination/pagination';
 const errorText = document.querySelector('.error-text');
 const searchBtn = form[1];
 const CURRENT_FILMS_KEY = 'current films';
-
 form.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
@@ -15,7 +14,6 @@ function onFormSubmit(event) {
   errorText.classList.remove('is-visible');
 
   const inputValue = event.target[0].value.trim('');
-  filmGallery.innerHTML = '';
 
   fetchMovieSearch(inputValue).then(data => {
     console.log(data);
@@ -23,16 +21,17 @@ function onFormSubmit(event) {
     if (!inputValue || data.results.length === 0) {
       errorText.classList.add('is-visible');
       searchBtn.classList.add('is-hidden');
-      filmGallery.innerHTML = markError();
+
       removeClass();
-      return;
+      return
     }
 
+    filmGallery.innerHTML = '';
     filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
-    // pagination(data.page, data.total_pages);
-
+    
     localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
     localStorage.setItem('INPUT_VALUE', JSON.stringify(inputValue));
+
   });
   form.reset();
 }
@@ -43,11 +42,6 @@ function removeClass() {
     searchBtn.classList.remove('is-hidden');
   }, 2000);
 }
-function markError() {
-  return `<div class="error-box">
-          <h2 class="error-box__whoops">Whoops(</h2>
-          <p class="error-box__text">Search result not successful. Enter the correct movie name and</p>
-    </div>`;
-}
+
 
 export { onFormSubmit, form };
