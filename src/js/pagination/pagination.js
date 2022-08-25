@@ -23,34 +23,34 @@ function pagination(currentPage, allPages) {
   globalAllPages = allPages;
 
   if (currentPage > 1) {
-    markup += `<li class="page__item"><span class="page__arrow page__arrow--left"></span></li>`;
+    markup += `<li class="page__item"><a href="#render" class="page__arrow page__arrow--left"></a></li>`;
   }
   if (currentPage > 1) {
-    markup += `<li class="page__item page__item--hidden"><span class="page__figure page__figure--transform">1</span></li>`;
+    markup += `<li class="page__item page__item--hidden"><a href="#render" class="page__figure page__figure--transform">1</a></li>`;
   }
   if (currentPage > 4) {
-    markup += `<li class="page__item page__item--hidden"><span class="page__dots">...</span></li>`;
+    markup += `<li class="page__item page__item--hidden"><a class="page__dots">...</a></li>`;
   }
   if (currentPage > 3) {
-    markup += `<li class="page__item"><span class="page__figure page__figure--transform">${beforeTwoPage}</span></li>`;
+    markup += `<li class="page__item"><a href="#render" class="page__figure page__figure--transform">${beforeTwoPage}</a></li>`;
   }
   if (currentPage > 2) {
-    markup += `<li class="page__item"><span class="page__figure page__figure--transform">${beforePage}</span></li>`;
+    markup += `<li class="page__item"><a href="#render" class="page__figure page__figure--transform">${beforePage}</a></li>`;
   }
-  markup += `<li class="page__item page__item--is-active"><span class="page__figure">${currentPage}</span></li>`;
+  markup += `<li class="page__item page__item--is-active"><a href="#render" class="page__figure">${currentPage}</a></li>`;
 
   if (allPages - 1 > currentPage) {
-    markup += `<li class="page__item"><span class="page__figure page__figure--transform">${afterPage}</span></li>`;
+    markup += `<li class="page__item"><a href="#render" class="page__figure page__figure--transform">${afterPage}</a></li>`;
   }
   if (allPages - 2 > currentPage) {
-    markup += `<li class="page__item"><span class="page__figure page__figure--transform">${afterTwoPage}</span></li>`;
+    markup += `<li class="page__item"><a href="#render" class="page__figure page__figure--transform">${afterTwoPage}</a></li>`;
   }
   if (allPages - 3 > currentPage) {
-    markup += `<li class="page__item page__item--hidden"><span class="page__dots">...</span></li>`;
+    markup += `<li class="page__item page__item--hidden"><a class="page__dots">...</a></li>`;
   }
   if (allPages > currentPage) {
-    markup += `<li class="page__item page__item--hidden"><span class="page__figure page__figure--transform">${allPages}</span></li>`;
-    markup += `<li class="page__item arrow"><span class="page__arrow page__arrow--right"></span></li>`;
+    markup += `<li class="page__item page__item--hidden"><a href="#render" class="page__figure page__figure--transform">${allPages}</a></li>`;
+    markup += `<li class="page__item arrow"><a href="#render" class="page__arrow page__arrow--right"></a></li>`;
   }
 
   paginationContainer.innerHTML = markup;
@@ -60,7 +60,7 @@ paginationContainer.addEventListener('click', onClickEvent);
 
 function onClickEvent(event) {
   let valueFromInput = JSON.parse(localStorage.getItem('INPUT_VALUE'));
-  if (event.target.nodeName !== 'SPAN') {
+  if (event.target.nodeName !== 'A') {
     return;
   }
   if (event.target.classList.contains('page__arrow--left')) {
