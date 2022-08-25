@@ -12,30 +12,33 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
   </head>
   <body>
-    
     <div class="wrapper">
-    <header class="section library-header">
-      <div class="container">
-        <include src="./partials/header-library.html"></include>
-      </div>
-    </header>
-
-    <main>
-      <section class="section">
+      <header class="section library-header">
         <div class="container">
-          <include src="./partials/myLibrary.html"></include>
+          <include src="./partials/header-library.html"></include>
         </div>
-      </section>
-    </main>
-    <footer>
-      <include src="./partials/footer.html"></include>
-    </footer>
+      </header>
+
+      <main>
+        <section class="section">
+          <div class="container">
+            <include src="./partials/myLibrary.html"></include>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <include src="./partials/footer.html"></include>
+      </footer>
     </div>
 
     <include src="./partials/footer-modal.html"></include>
-    
+
     <script type="module" src="./library.js"></script>
   </body>
 </html>
