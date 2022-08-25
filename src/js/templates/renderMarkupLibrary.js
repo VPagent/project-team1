@@ -3,10 +3,10 @@ import { matchGenresById } from '../findGenres/findGenres';
 // import { pagination } from '../pagination/pagination';
 
 
-const myLibraryContainer = document.querySelector('.film-myLibrary__list');
+export const myLibraryContainer = document.querySelector('.film-myLibrary__list');
 const headerButtonlist = document.querySelector('.header-buttonlist');
 
-let filmKey = 'Watched';
+export let filmKey = 'Watched';
 
 const savedFilms = localStorage.getItem(filmKey);
 const parsedFilms = JSON.parse(savedFilms);
