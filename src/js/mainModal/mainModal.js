@@ -100,9 +100,9 @@ function misClick(click) {
         queueBtn.classList.add('added');
       }
     }
-  
+  }
 
-
+}
 
 
  
@@ -125,5 +125,3 @@ function esc(key) {
     closeToggleModal();
   }
 }
-
-
