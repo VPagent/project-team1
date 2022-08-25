@@ -33,5 +33,9 @@ export function matchGenresByIdForModal(genresIds) {
     .filter(({ id }) => genresIds.includes(id))
     .map(({ name }) => name);
 
-  return filteredGenres.join(', ');
+  if (filteredGenres.length == 0) {
+    return 'No info';
+  } else {
+    return filteredGenres.join(', ');
+  }
 }
