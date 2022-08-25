@@ -1,11 +1,11 @@
 .material-symbol {
   position: absolute;
-  bottom: -1%;
-  left: 105%;
+  bottom: -16%;
+  left: 3%;
   font-family: 'Material Symbols Outlined';
   font-weight: normal;
   font-style: normal;
-  font-size: 15px;
+
   line-height: 1;
   letter-spacing: normal;
   text-transform: none;
@@ -14,33 +14,46 @@
   word-wrap: normal;
   direction: ltr;
 
-  @media screen and (max-width: 767px) {
-    font-size: 18px;
-  }
+  // @media screen and (max-width: 767px) {
+  //   font-size: 18px;
+  // }
 }
 
 .nav-list__item .themetoggle {
   position: relative;
-  font-size: 12px;
-  @media screen and (max-width: 767px) {
-    font-size: 0px;
-  }
+  font-size: 18px;
 }
 
 .dark {
-  background-color: #333;
+  background-image: linear-gradient(
+    to top,
+    rgba(51, 51, 51, 0.483),
+    $dark-mode-color
+  );
+  background-color: rgb(51, 51, 51);
+  color: $text-color-3;
 }
 
 .light {
-  background-color: white;
+  background-color: $primary-background-color;
+  color: $text-color-1;
 }
 
 .footer-dark {
-  background-color: #222;
+  background-color: #272626;
   color: #d3d3d3;
 }
 
 .footer-light {
   background-color: $footer-background-color;
   color: #545454;
+}
+
+.modal-dark {
+  background-color: rgb(51, 51, 51);
+  box-shadow: 0 0 10px 0.5px rgb(236, 48, 48);
+}
+
+.heared-shaddow {
+  box-shadow: 0 0 35px 0.5px rgb(236, 48, 48);
 }

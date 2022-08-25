@@ -1,3 +1,15 @@
+table {
+  table-layout: fixed;
+  // width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+
+th,
+td {
+  padding-bottom: 8px;
+}
+
 .main-modal__backdrop {
   z-index: 3;
   width: 100%;
@@ -50,7 +62,7 @@ body.overflow {
 
 .main-modal__button--close {
   border: 0;
-  background-color: $primary-background-color;
+  background-color: transparent;
   position: absolute;
   cursor: pointer;
   top: 8px;
@@ -73,18 +85,20 @@ body.overflow {
   }
 
   @media screen and (min-width: 1024px) {
-    max-width: 375px;
-    max-height: 478px;
+    min-width: 375px;
+    min-height: 478px;
     margin-right: 16px;
   }
 }
 
 .main-modal__preview img {
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .main-modal__title {
-  color: $text-color-1;
   text-transform: uppercase;
   padding-bottom: 20px;
   font-size: 20px;
@@ -95,24 +109,21 @@ body.overflow {
   }
 }
 
-.main-modal__box {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.main-modal__box p {
-  margin-bottom: 8px;
-}
-
 .main-modal__features {
   font-size: 12px;
   line-height: 1.33;
   color: $text-color-6;
-  margin-right: 39px;
+  margin-right: 29px;
+  width: 120px;
 
   @media screen and (min-width: 1024px) {
     margin-right: 83px;
+    width: 160px;
   }
+}
+
+.main-modal__features > p {
+  width: max-content;
 }
 
 .main-modal__values {
@@ -131,7 +142,7 @@ body.overflow {
 }
 
 .main-modal__values--votes {
-  background: $footer-background-color;
+  // background: $footer-background-color;
   border-radius: 5px;
   padding: 1px 4px;
 }

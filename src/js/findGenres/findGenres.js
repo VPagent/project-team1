@@ -21,3 +21,21 @@ function formateGenresToString(genresArray) {
   }
   return genresArray.join(', ');
 }
+
+//Для модалки (треба рендерити всі жанри а не тільки 3)
+export function matchGenresByIdForModal(genresIds) {
+  if (!genresIds) {
+    return '';
+  }
+  const localeGenres = localStorage.getItem(GENRES_KEY);
+  const parsedGenres = JSON.parse(localeGenres);
+  const filteredGenres = parsedGenres
+    .filter(({ id }) => genresIds.includes(id))
+    .map(({ name }) => name);
+
+  if (filteredGenres.length == 0) {
+    return 'No info';
+  } else {
+    return filteredGenres.join(', ');
+  }
+}
