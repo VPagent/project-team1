@@ -8,15 +8,14 @@ const body = document.querySelector('body');
 const backdrop = document.querySelector('.main-modal__backdrop');
 // pasha
 
-// 
+//
 openModalBtn.addEventListener('click', misClick);
-body.addEventListener('keyup', esc);
 closeModalBtn.addEventListener('click', closeToggleModal);
 document.addEventListener('click', clickOverlay);
 
 function misClick(click) {
   if (click.srcElement.className === 'film-gallery__image') {
-    // console.log(e.target.alt);
+    body.addEventListener('keyup', esc);
     modal.classList.remove('is-hidden');
     body.classList.add('overflow');
 
@@ -31,63 +30,64 @@ function misClick(click) {
     // console.log(currentFilm);
     const modalContent = renderMarkupModal(currentFilm);
     modalContainer.innerHTML = modalContent;
-  // PASHA
-  let watchedObj = []
-  let queueObj = []
-    const modalBtnList = document.querySelector(".main-modal__buttons")
-    modalBtnList.addEventListener("click", onBtnClickInModal)
-    const watchedBtn = document.querySelector(".main-modal__buttons--watched")
-    const queueBtn = document.querySelector(".main-modal__buttons--queue")
+
+    // PASHA
+    let watchedObj = [];
+    let queueObj = [];
+    const modalBtnList = document.querySelector('.main-modal__buttons');
+    modalBtnList.addEventListener('click', onBtnClickInModal);
+    const watchedBtn = document.querySelector('.main-modal__buttons--watched');
+    const queueBtn = document.querySelector('.main-modal__buttons--queue');
     // проверка, есть ли объект в локальном хранилище
 
-    if(localStorage.getItem("Watched").includes(currentFilm.id)){
-      watchedBtn.textContent = "Remove in watched"
-      watchedBtn.classList.add("added")
+    if (localStorage.getItem('Watched').includes(currentFilm.id)) {
+      watchedBtn.textContent = 'Remove in watched';
+      watchedBtn.classList.add('added');
     }
-    if(localStorage.getItem("Queue").includes(currentFilm.id)){
-      queueBtn.textContent = "Remove in queue"
-      queueBtn.classList.add("added")
+    if (localStorage.getItem('Queue').includes(currentFilm.id)) {
+      queueBtn.textContent = 'Remove in queue';
+      queueBtn.classList.add('added');
     }
-    // 
-    function onBtnClickInModal(event){
-      if(event.target.nodeName !== "BUTTON"){
-        return
+    //
+    function onBtnClickInModal(event) {
+      if (event.target.nodeName !== 'BUTTON') {
+        return;
       }
 
-      if(event.target.classList.contains("main-modal__buttons--watched")){
-        if(localStorage.getItem("Watched")){
-          watchedObj = JSON.parse(localStorage.getItem("Watched"))
+      if (event.target.classList.contains('main-modal__buttons--watched')) {
+        if (localStorage.getItem('Watched')) {
+          watchedObj = JSON.parse(localStorage.getItem('Watched'));
         }
-        if(event.target.classList.contains("added")){
-          const idx = watchedObj.findIndex(elem => elem.id === currentFilm.id)
-          watchedObj.splice(idx, 1)
-          localStorage.setItem("Watched", JSON.stringify(watchedObj))
-          watchedBtn.textContent = "Add to watched"
-          watchedBtn.classList.remove("added")
-          return
+        if (event.target.classList.contains('added')) {
+          const idx = watchedObj.findIndex(elem => elem.id === currentFilm.id);
+          watchedObj.splice(idx, 1);
+          localStorage.setItem('Watched', JSON.stringify(watchedObj));
+          watchedBtn.textContent = 'Add to watched';
+          watchedBtn.classList.remove('added');
+          return;
         }
-        watchedObj.push(currentFilm)
-        localStorage.setItem("Watched", JSON.stringify(watchedObj))
-        watchedBtn.textContent = "Remove in watched"
-        watchedBtn.classList.add("added")
+        watchedObj.push(currentFilm);
+        localStorage.setItem('Watched', JSON.stringify(watchedObj));
+        watchedBtn.textContent = 'Remove in watched';
+        watchedBtn.classList.add('added');
       }
 
-      if(event.target.classList.contains("main-modal__buttons--queue")){
-        if(localStorage.getItem("Queue")){
-          queueObj = JSON.parse(localStorage.getItem("Queue"))
+      if (event.target.classList.contains('main-modal__buttons--queue')) {
+        if (localStorage.getItem('Queue')) {
+          queueObj = JSON.parse(localStorage.getItem('Queue'));
         }
-        if(event.target.classList.contains("added")){
-          const idx = queueObj.findIndex(elem => elem.id === currentFilm.id)
-          queueObj.splice(idx, 1)
-          localStorage.setItem("Queue", JSON.stringify(queueObj))
-          queueBtn.textContent = "Add to queue"
-          queueBtn.classList.remove("added")
-          return
+        if (event.target.classList.contains('added')) {
+          const idx = queueObj.findIndex(elem => elem.id === currentFilm.id);
+          queueObj.splice(idx, 1);
+          localStorage.setItem('Queue', JSON.stringify(queueObj));
+          queueBtn.textContent = 'Add to queue';
+          queueBtn.classList.remove('added');
+          return;
         }
-        queueObj.push(currentFilm)
-        localStorage.setItem("Queue", JSON.stringify(queueObj))
-        queueBtn.textContent = "Remove in queue"
-        queueBtn.classList.add("added")
+        queueObj.push(currentFilm);
+        localStorage.setItem('Queue', JSON.stringify(queueObj));
+        queueBtn.textContent = 'Remove in queue';
+        queueBtn.classList.add('added');
       }
     }
   }
@@ -96,13 +96,14 @@ function misClick(click) {
 function esc(key) {
   if (key.code === 'Escape') {
     closeToggleModal();
+    // console.log('ескейпт');
   }
 }
 
 function closeToggleModal() {
   modal.classList.add('is-hidden');
   body.classList.remove('overflow');
-  // modalContainer.innerHTML = '';
+  body.removeEventListener('keyup', esc);
 }
 
 function clickOverlay(overLay) {
