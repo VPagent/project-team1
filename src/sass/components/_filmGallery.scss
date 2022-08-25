@@ -7,7 +7,6 @@
   }
 
   &__item {
-
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     width: 280px;
@@ -101,7 +100,7 @@
     font-size: inherit;
     line-height: inherit;
     text-transform: uppercase;
-    color: $text-color-1;
+    // color: $text-color-1;
   }
 
   &__info {
@@ -121,7 +120,6 @@
 
     &-vote {
       display: none;
-
     }
   }
 }
