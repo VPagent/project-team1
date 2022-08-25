@@ -5,7 +5,6 @@ import { onClickEvent } from '../pagination/pagination';
 const paginationContainer = document.querySelector('.page__list');
 
 export function renderMarkup(data) {
-  console.log(data);
   const markup = data.results
     .map(
       ({
