@@ -1,5 +1,7 @@
+import { onClickEvt } from '../pagination/paginationLibrary';
 import { matchGenresById } from '../findGenres/findGenres';
 // import { pagination } from '../pagination/pagination';
+
 
 const myLibraryContainer = document.querySelector('.film-myLibrary__list');
 const headerButtonlist = document.querySelector('.header-buttonlist');
@@ -83,19 +85,6 @@ export function renderMarkupLibrary(parsedFilms) {
                     // return markup;
                     myLibraryContainer.insertAdjacentHTML('beforeend', markup);
                   }
-                  
-                  
-
-
-
-
-
-
-
-
-
-
-
 
 
 

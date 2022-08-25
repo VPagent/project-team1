@@ -1,5 +1,9 @@
 import { matchGenresById } from '../findGenres/findGenres';
 import { pagination } from '../pagination/pagination';
+import { onClickEvent } from '../pagination/pagination';
+
+const paginationContainer = document.querySelector('.page__list');
+
 export function renderMarkup(data) {
   console.log(data);
   const markup = data.results
@@ -45,6 +49,6 @@ export function renderMarkup(data) {
       }
     )
     .join('');
-  pagination(data.page, data.total_pages);
+  pagination(data.page, data.total_pages, paginationContainer, onClickEvent);
   return markup;
 }
