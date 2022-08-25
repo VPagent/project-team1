@@ -12,6 +12,7 @@ import {
 import { renderMarkupModal } from './js/mainModal/renderMarkupModal';
 import './js/mainModal/mainModal';
 import './js/toggler/theme';
+import './js/backToTop/BackToTop';
 
 export const filmGallery = document.querySelector('.film-gallery__list');
 export const GENRES_KEY = 'genres';
@@ -27,12 +28,11 @@ if (!localStorage.getItem(GENRES_KEY)) {
   checkGenresInLocaleStorage();
 }
 getTrendData()
-.then(response => {
-  // console.log(response);
-  localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(response.results));
-  localStorage.removeItem('INPUT_VALUE');
-  filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
-  // pagination(response.page, response.total_pages);
-})
-.catch(console.error);
-
+  .then(response => {
+    // console.log(response);
+    localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(response.results));
+    localStorage.removeItem('INPUT_VALUE');
+    filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
+    // pagination(response.page, response.total_pages);
+  })
+  .catch(console.error);
