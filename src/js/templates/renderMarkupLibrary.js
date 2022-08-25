@@ -1,16 +1,27 @@
 import { matchGenresById } from '../findGenres/findGenres';
 import { pagination } from '../pagination/pagination';
 
-const myLibraryContainer = document.querySelector('.film-myLibrary__list');
-console.log(myLibraryContainer);
+const btnWatched = document.querySelector('.js-watched');
+const btnQueue = document.querySelector('.js-queue');
+let filmKey = '';
 
-const savedFilms = localStorage.getItem("current films");
+//Queue
+// Watched
+btnWatched.addEventListener('click', () => {
+  filmKey = 'Watched';
+  return filmKey
+})
+console.log(filmKey);
+
+const myLibraryContainer = document.querySelector('.film-myLibrary__list');
+// console.log(myLibraryContainer);
+
+const savedFilms = localStorage.getItem(filmKey);
 const parsedFilms = JSON.parse(savedFilms);
 console.log(parsedFilms); // settings object
-// console.log(localStorage.setItem("genres"));
 
 export function renderMarkupLibrary(parsedFilms) {
-  console.log(parsedFilms);
+  // console.log(parsedFilms);
   const markup = parsedFilms
     .map(
       ({

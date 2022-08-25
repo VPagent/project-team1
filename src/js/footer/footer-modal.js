@@ -28,12 +28,9 @@ closePopUp.addEventListener('click', () => {
     }
   });
 
-
-function addWindow() {
   window.addEventListener('click', (e) => {
     if (e.target == popUpContainer) {
       popUp.classList.remove('open');
       body.classList.remove('disable-scroll');
     }
   })
-}
