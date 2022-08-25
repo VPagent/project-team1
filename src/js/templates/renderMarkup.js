@@ -1,7 +1,6 @@
 import { matchGenresById } from '../findGenres/findGenres';
 import { pagination } from '../pagination/pagination';
 export function renderMarkup(data) {
-  console.log(data);
   const markup = data.results
     .map(
       ({
