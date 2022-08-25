@@ -62,7 +62,7 @@ body.overflow {
 
 .main-modal__button--close {
   border: 0;
-  background-color: $primary-background-color;
+  background-color: transparent;
   position: absolute;
   cursor: pointer;
   top: 8px;
@@ -99,7 +99,6 @@ body.overflow {
 }
 
 .main-modal__title {
-  color: $text-color-1;
   text-transform: uppercase;
   padding-bottom: 20px;
   font-size: 20px;
@@ -143,7 +142,7 @@ body.overflow {
 }
 
 .main-modal__values--votes {
-  background: $footer-background-color;
+  // background: $footer-background-color;
   border-radius: 5px;
   padding: 1px 4px;
 }
@@ -155,9 +154,6 @@ body.overflow {
 
 .main-modal__values--2 {
   line-height: 1.33;
-}
-
-.main-modal__description {
 }
 
 .main-modal__about {

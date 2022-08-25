@@ -10,9 +10,11 @@ export function renderMarkupModal({
   overview,
 }) {
   return `            <div class="main-modal__preview">
-                        <img src="https://image.tmdb.org/t/p/original${poster_path}" alt="${
-    title || name
-  }"/>
+                        <img src="${
+                          poster_path
+                            ? 'https://image.tmdb.org/t/p/w500' + poster_path
+                            : 'https://img.freepik.com/free-vector/glitch-error-404-page_23-2148105404.jpg?w=1000'
+                        }" alt="${title || name}"/>
                       </div>
                       <div>
                         <h2 class="main-modal__title">${title}</h2>
@@ -20,9 +22,9 @@ export function renderMarkupModal({
                           <table>
                             <tr>
                               <td class="main-modal__features">Vote / Votes</td>
-                              <td class="main-modal__values"><span class="main-modal__values--vote">${vote_average.toFixed(
-                                1
-                              )}</span><span class="main-modal__values--slash"> /</span><span class="main-modal__values--votes">${vote_count}</span></td>
+                              <td class="main-modal__values"><span class="main-modal__values--vote">${
+                                vote_average.toFixed(1) || 'No info'
+                              }</span><span class="main-modal__values--slash"> /</span><span class="main-modal__values--votes">${vote_count}</span></td>
                             </tr>
                             <tr>
                               <td class="main-modal__features">Popularity</td>
@@ -43,7 +45,9 @@ export function renderMarkupModal({
                           </table>
                            <div class="main-modal__description">
                             <p class="main-modal__about">about</p>
-                            <p class="main-modal__text">${overview}</p>
+                            <p class="main-modal__text">${
+                              overview || 'No overview found.'
+                            }</p>
                           </div>
                         <ul class="main-modal__buttons">
                           <li>

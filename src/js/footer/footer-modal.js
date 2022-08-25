@@ -8,32 +8,37 @@ const body = document.querySelector('body');
 const popUpContainer = document.querySelector('.pop-up-container');
 
 
-openPopUp.addEventListener('click', function (e) {
-  e.preventDefault();
-  popUp.classList.add('open');
-  showConfetti();
-  body.classList.add('disable-scroll');
-});
+openPopUp.addEventListener('click', tisClick)
 
-closePopUp.addEventListener('click', () => {
+function tisClick(click) {
+  if (click.srcElement.className === 'open-pop-up') {
+    click.preventDefault();
+    popUp.classList.add('open');
+    showConfetti();
+    body.addEventListener('keyup', esc);
+    window.addEventListener('click', onWindow);
+    closePopUp.addEventListener('click', closeToggleModal)
+
+  body.classList.add('disable-scroll');
+  }
+}
+
+function esc(key) {
+  if (key.code === 'Escape') {
+    closeToggleModal();
+  }
+}
+
+function closeToggleModal() {
   popUp.classList.remove('open');
   body.classList.remove('disable-scroll');
-});
-
-
-  body.addEventListener('keyup', e => {
-    if (e.code === 'Escape') {
-      popUp.classList.remove('open');
-      body.classList.remove('disable-scroll');
-    }
-  });
-
-
-function addWindow() {
-  window.addEventListener('click', (e) => {
-    if (e.target == popUpContainer) {
-      popUp.classList.remove('open');
-      body.classList.remove('disable-scroll');
-    }
-  })
+  body.removeEventListener('keyup', esc);
+  window.removeEventListener('click', esc);
 }
+
+function onWindow(click) {
+  if (click.target == popUpContainer) {
+    closeToggleModal();
+  }
+}
+

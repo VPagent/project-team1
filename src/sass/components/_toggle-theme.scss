@@ -1,6 +1,6 @@
 .material-symbol {
   position: absolute;
-  bottom: -16%;
+  bottom: 0%;
   left: 3%;
   font-family: 'Material Symbols Outlined';
   font-weight: normal;
@@ -21,11 +21,16 @@
 
 .nav-list__item .themetoggle {
   position: relative;
-  font-size: 18px;
+  font-size: 27px;
 }
 
 .dark {
-  background-color: #825f5f;
+  background-image: linear-gradient(
+    to top,
+    rgba(51, 51, 51, 0.483),
+    $dark-mode-color
+  );
+  background-color: rgb(51, 51, 51);
   color: $text-color-3;
 }
 
@@ -35,11 +40,20 @@
 }
 
 .footer-dark {
-  background-color: #4d1212;
+  background-color: #272626;
   color: #d3d3d3;
 }
 
 .footer-light {
   background-color: $footer-background-color;
   color: #545454;
+}
+
+.modal-dark {
+  background-color: rgb(51, 51, 51);
+  box-shadow: 0 0 10px 0.5px rgb(236, 48, 48);
+}
+
+.heared-shaddow {
+  box-shadow: 0 0 35px 0.5px rgb(236, 48, 48);
 }
