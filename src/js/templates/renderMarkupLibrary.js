@@ -18,8 +18,7 @@ function getFilmsKey(evt) {
     }
   if (evt.target.classList.contains('js-watched')) {
     filmKey = 'Watched'
-    console.log(filmKey);
-         const savedFilms = localStorage.getItem(filmKey);
+    const savedFilms = localStorage.getItem(filmKey);
     const parsedFilms = JSON.parse(savedFilms);
     myLibraryContainer.innerHTML = '';
      renderMarkupLibrary(parsedFilms)
