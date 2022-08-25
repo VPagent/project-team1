@@ -11,7 +11,7 @@ const backdrop = document.querySelector('.main-modal__backdrop');
 // 
 openModalBtn.addEventListener('click', misClick);
 
-body.addEventListener('keyup', esc);
+body.addEventListener('keyup', esc)
 closeModalBtn.addEventListener('click', closeToggleModal);
 document.addEventListener('click', clickOverlay);
 let currentFilm;
