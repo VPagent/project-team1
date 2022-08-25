@@ -1,16 +1,18 @@
+import { onClickEvt } from '../pagination/paginationLibrary';
 import { matchGenresById } from '../findGenres/findGenres';
 import { pagination } from '../pagination/pagination';
 
 const myLibraryContainer = document.querySelector('.film-myLibrary__list');
-console.log(myLibraryContainer);
+const paginationContainer = document.querySelector('.page__list-library');
 
-const savedFilms = localStorage.getItem("current films");
+console.log(pagination);
+
+const savedFilms = localStorage.getItem('current films');
 const parsedFilms = JSON.parse(savedFilms);
 console.log(parsedFilms); // settings object
 // console.log(localStorage.setItem("genres"));
 
 export function renderMarkupLibrary(parsedFilms) {
-  console.log(parsedFilms);
   const markup = parsedFilms
     .map(
       ({
@@ -21,7 +23,6 @@ export function renderMarkupLibrary(parsedFilms) {
         vote_average,
         release_date,
         genre_ids,
-        
       }) => {
         let POSTER_IMG_URL = '';
         if (poster_path) {
@@ -53,7 +54,14 @@ export function renderMarkupLibrary(parsedFilms) {
       }
     )
     .join('');
-  // pagination(data.page, data.total_pages);
+
+  let page = 10;
+  const totalPages = Math.ceil(parsedFilms.length / 20);
+  pagination(page, totalPages, paginationContainer, onClickEvt);
   return markup;
 }
-myLibraryContainer.insertAdjacentHTML('beforeend', renderMarkupLibrary(parsedFilms));
+
+myLibraryContainer.insertAdjacentHTML(
+  'beforeend',
+  renderMarkupLibrary(parsedFilms)
+);
