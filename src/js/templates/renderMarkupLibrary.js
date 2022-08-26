@@ -3,13 +3,17 @@ import { matchGenresById } from '../findGenres/findGenres';
 
 const myLibraryContainer = document.querySelector('.film-myLibrary__list');
 const headerButtonlist = document.querySelector('.header-buttonlist');
+const imgNotFound = document.querySelector('.img-not-found')
 
 let filmKey = 'Watched';
 
 const savedFilms = localStorage.getItem(filmKey);
 const parsedFilms = JSON.parse(savedFilms);
+console.log(parsedFilms.length);
 myLibraryContainer.innerHTML = '';
 renderMarkupLibrary(parsedFilms)
+
+
 
 headerButtonlist.addEventListener('click', getFilmsKey);
 function getFilmsKey(evt) {
@@ -33,10 +37,11 @@ function getFilmsKey(evt) {
   }
 }
 
-// console.log(parsedFilms); // settings object
-
 export function renderMarkupLibrary(parsedFilms) {
-  console.log(parsedFilms);
+if (!parsedFilms) {
+  imgNotFound.classList.add('open');
+  return
+} 
   const markup = parsedFilms
   .map(
     ({
