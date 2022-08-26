@@ -92,10 +92,18 @@ body.overflow {
 }
 
 .main-modal__preview img {
-  width: 100%;
+  width: 240px;
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
+
+  @media screen and (min-width: $tablet) {
+    width: 264px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    width: 375px;
+  }
 }
 
 .main-modal__title {
