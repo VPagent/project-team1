@@ -3,6 +3,7 @@ import {
   API_KEY,
   BASE_URL,
   TREND_URL,
+  WEEK_TREND_URL,
   FIND_FILM,
   GET_GENRE,
 } from './api_const';
@@ -11,8 +12,8 @@ import { showSpinner } from '../../index';
 
 const spinnerDiv = document.querySelector('.loader');
 
-// Получение полной информации о трендах
-export const getTrendData = async (page = 1) => {
+// Получение полной информации о трендах за день
+export const getDayTrendData = async (page = 1) => {
   try {
     showSpinner();
     // spinnerDiv.style.display = 'block';
@@ -23,6 +24,26 @@ export const getTrendData = async (page = 1) => {
   } catch (error) {
     console.error('Неудачный запрос' + error);
   }
+};
+
+// Получение полной информации о трендах за неделю
+export const getWeekTrendData = async (page = 1) => {
+  try {
+    showSpinner();
+    // spinnerDiv.style.display = 'block';
+    const { data } = await axios.get(
+      `${WEEK_TREND_URL}?api_key=${API_KEY}&page=${page}`
+    );
+    return data;
+  } catch (error) {
+    console.error('Неудачный запрос' + error);
+  }
+};
+
+// Костиль для получение полной информации о трендах
+export const getTrendData = async (page = 1) => {
+  const sort = localStorage.getItem('sort');
+  return sort === 'week' ? getWeekTrendData(page) : getDayTrendData(page);
 };
 
 // Поиск фильма по поисковому запросу
