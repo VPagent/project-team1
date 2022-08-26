@@ -8,6 +8,7 @@ import { renderMarkupModal } from './js/mainModal/renderMarkupModal';
 import './js/mainModal/mainModal';
 import './js/toggler/theme';
 import './js/backToTop/BackToTop';
+import './js/sort/sort';
 
 export const filmGallery = document.querySelector('.film-gallery__list');
 export const GENRES_KEY = 'genres';
@@ -23,7 +24,6 @@ async function checkGenresInLocaleStorage() {
 if (!localStorage.getItem(GENRES_KEY)) {
   checkGenresInLocaleStorage();
 }
-
 
 export function showSpinner() {
   spinnerDiv.style.display = 'block';
