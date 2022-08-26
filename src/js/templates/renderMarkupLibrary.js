@@ -1,11 +1,14 @@
 import { onClickEvt } from '../pagination/paginationLibrary';
 import { matchGenresById } from '../findGenres/findGenres';
 import { paginationLibrary } from '../pagination/paginationLibrary';
-// import { a } from '../pagination/paginationLibrary';
-// console.log(a);
+
 
 export const myLibraryContainer = document.querySelector('.film-myLibrary__list');
 const headerButtonlist = document.querySelector('.header-buttonlist');
+// pasha
+export const btnWatched = document.querySelector(".js-watched")
+export const btnQueue = document.querySelector(".js-queue")
+// 
 
 const paginationLibraryContainer = document.querySelector(
   '.page__list-library'
@@ -22,9 +25,9 @@ const imgNotFound = document.querySelector('.img-not-found')
 export let filmKey = 'Watched';
 
 
+
 const savedFilms = localStorage.getItem(filmKey);
 const parsedFilms = JSON.parse(savedFilms);
-console.log(parsedFilms.length);
 myLibraryContainer.innerHTML = '';
 renderMarkupLibrary(parsedFilms);
 
@@ -65,6 +68,14 @@ function getFilmsKey(evt) {
     // console.log(startIdx);
   }
 }
+// if(filmKey === "Watched"){
+//   btnWatched.classList.add("current--btn")
+//   btnQueue.classList.remove("current--btn")
+// }
+// if(filmKey === "Queue"){
+//   btnQueue.classList.add("current--btn")
+//   btnWatched.classList.remove("current--btn")
+// }
 
 
 paginationLibraryContainer.addEventListener('click', onClickEvt);

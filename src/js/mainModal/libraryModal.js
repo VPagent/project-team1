@@ -1,5 +1,5 @@
 import { renderMarkupModal } from "./renderMarkupModal"
-import { filmKey, renderMarkupLibrary, myLibraryContainer } from "../templates/renderMarkupLibrary"
+import { filmKey, renderMarkupLibrary, myLibraryContainer, btnWatched, btnQueue } from "../templates/renderMarkupLibrary"
 let CURRENT_STORAGE
 const filmList = document.querySelector(".film-myLibrary__list")
 
@@ -8,15 +8,10 @@ const closeModalBtn = document.querySelector('[data-modal-main-close]');
 const modalContainer = document.querySelector('.main-modal__container');
 const body = document.querySelector('body');
 const backdrop = document.querySelector('.main-modal__backdrop');
-// let watchedObj = []
-// let queueObj = []
-// let watchedBtnL
-// let queueBtnL
-// let currFilm
+
 filmList.addEventListener("click", onFilmClick)
 
 function onFilmClick(event){
-    console.log(1)
     if(!event.target.closest(".film-gallery__item")){
         return
     }
@@ -41,12 +36,7 @@ function onFilmClick(event){
     let queueBtnL = document.querySelector(".main-modal__buttons--queue")
     queueBtnL.textContent = "Remove in queue"
     queueBtnL.classList.add("added")
-    // if(CURRENT_STORAGE === "Watched"){
-    //   queueBtnL.setAttribute("disabled")
-    // }
-    // if(CURRENT_STORAGE === "Queue"){
-    //   watchedBtnL.setAttribute("disabled")
-    // }
+
     if (!localStorage.getItem('Watched').includes(currFilm.id)) {
       watchedBtnL.textContent = 'Add to watched';
       watchedBtnL.classList.remove('added');
@@ -67,7 +57,7 @@ function onFilmClick(event){
           if(localStorage.getItem("Watched")){
             watchedObj = JSON.parse(localStorage.getItem("Watched"))
           }
-    
+
           if(event.target.classList.contains("added")){
             const idx = watchedObj.findIndex(elem => elem.id === currFilm.id)
             watchedObj.splice(idx, 1)
@@ -75,7 +65,7 @@ function onFilmClick(event){
             watchedBtnL.textContent = "Add to watched"
             watchedBtnL.classList.remove("added")
             myLibraryContainer.innerHTML=""
-            renderMarkupLibrary( JSON.parse(localStorage.getItem("Watched")))
+            renderMarkupLibrary( JSON.parse(localStorage.getItem(CURRENT_STORAGE)))
             closeToggleModal()
             return
           }
@@ -97,7 +87,7 @@ function onFilmClick(event){
             queueBtnL.textContent = "Add to queue"
             queueBtnL.classList.remove("added")
             myLibraryContainer.innerHTML=""
-            renderMarkupLibrary( JSON.parse(localStorage.getItem("Queue")))
+            renderMarkupLibrary( JSON.parse(localStorage.getItem(CURRENT_STORAGE)))
             closeToggleModal()
             return
           }
@@ -120,7 +110,6 @@ function esc(key) {
 function closeToggleModal() {
     modal.classList.add('is-hidden');
     body.classList.remove('overflow');
-    // modalContainer.innerHTML = '';
 }
   
 function clickOverlay(overLay) {
