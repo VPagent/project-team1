@@ -1,9 +1,22 @@
 .sort {
   display: flex;
-  margin: 20px 0 0 50px;
+  margin: 20px 0 0 100px;
+
+  @media screen and(min-width: $mobile) {
+    margin: 10px 0 0 40px;
+  }
 }
 .sort p {
   margin-right: 10px;
+  @media screen and(min-width: $mobile) {
+    font-size: 15px;
+  }
+  @media screen and(min-width: $tablet) {
+    font-size: 20px;
+  }
+  @media screen and(min-width: 1280px) {
+    font-size: 35px;
+  }
 }
 .sort-list {
   display: flex;
@@ -11,9 +24,43 @@
 .sort-item {
   margin-right: 5px;
 }
-.sort-button_1 {
+.sort-button_day {
+  width: 125px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+
+  @media screen and(min-width: $mobile) {
+    width: 45px;
+    height: 25px;
+    font-size: 15px;
+  }
+  @media screen and(min-width: $tablet) {
+    width: 70px;
+  }
+  @media screen and(min-width: 1280px) {
+    width: 125px;
+    height: 50px;
+    font-size: 25px;
+  }
 }
-.sort-button_2 {
+.sort-button_week {
+  width: 125px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+
+  @media screen and(min-width: $mobile) {
+    width: 65px;
+    height: 25px;
+    font-size: 15px;
+  }
+  @media screen and(min-width: $tablet) {
+    width: 90px;
+  }
+  @media screen and(min-width: 1280px) {
+    width: 125px;
+    height: 50px;
+    font-size: 25px;
+  }
 }
 
 .clickOn {

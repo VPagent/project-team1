@@ -1,5 +1,4 @@
 export { pagination };
-export { onClickEvent };
 
 import { renderMarkup } from '../templates/renderMarkup';
 import { getTrendData } from '../api/api_fetch';
@@ -12,7 +11,9 @@ let globalAllPages = 0;
 
 const CURRENT_FILMS_KEY = 'current films';
 
-function pagination(currentPage, allPages, paginationContainer, callBack) {
+const paginationContainer = document.querySelector('.page__list');
+
+function pagination(currentPage, allPages) {
   let markup = '';
   let beforeTwoPage = currentPage - 2;
   let beforePage = currentPage - 1;
@@ -54,7 +55,6 @@ function pagination(currentPage, allPages, paginationContainer, callBack) {
   }
 
   paginationContainer.innerHTML = markup;
-  paginationContainer.addEventListener('click', callBack);
 }
 
 function onClickEvent(event) {
@@ -109,7 +109,6 @@ function onClickEvent(event) {
 
   if (valueFromInput) {
     fetchMovieSearch(valueFromInput, page).then(data => {
-      console.log(data);
       localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(data.results));
       filmGallery.innerHTML = '';
       filmGallery.insertAdjacentHTML('beforeend', renderMarkup(data));
@@ -128,3 +127,4 @@ function onClickEvent(event) {
     return;
   }
 }
+paginationContainer.addEventListener('click', onClickEvent);

@@ -1,26 +1,26 @@
-import { onClickEvt } from '../pagination/paginationLibrary';
 import { matchGenresById } from '../findGenres/findGenres';
-import { paginationLibrary } from '../pagination/paginationLibrary';
+
 
 export const myLibraryContainer = document.querySelector('.film-myLibrary__list');
-const headerButtonlist = document.querySelector('.header-buttonlist');
 
-const paginationLibraryContainer = document.querySelector(
-  '.page__list-library'
-);
+const headerButtonlist = document.querySelector('.header-buttonlist');
+// pasha
+export const btnWatched = document.querySelector(".js-watched")
+export const btnQueue = document.querySelector(".js-queue")
+// 
+
 
 const PER_PAGE = 6;
 let currentPage = 1;
 
-let arr = [];
 
-const imgNotFound = document.querySelector('.img-not-found')
+const imgNotFound = document.querySelector('.img-not-found');
+
 
 export let filmKey = 'Watched';
 
 const savedFilms = localStorage.getItem(filmKey);
 const parsedFilms = JSON.parse(savedFilms);
-console.log(parsedFilms.length);
 myLibraryContainer.innerHTML = '';
 renderMarkupLibrary(parsedFilms);
 
@@ -35,13 +35,6 @@ function getFilmsKey(evt) {
     const parsedFilms = JSON.parse(savedFilms);
     myLibraryContainer.innerHTML = '';
     renderMarkupLibrary(parsedFilms);
-    const totalPage = getTotalPages(parsedFilms);
-    paginationLibrary(currentPage, totalPage);
-    // paginationLibraryContainer.addEventListener('click', onClickEvt);
-    const startIdx = getIndex(currentPage, PER_PAGE);
-    const endIdx = startIdx + PER_PAGE - 1;
-    console.log(endIdx);
-    // console.log(startIdx);
   }
   if (evt.target.classList.contains('js-queue')) {
     filmKey = 'Queue';
@@ -50,23 +43,15 @@ function getFilmsKey(evt) {
     const parsedFilms = JSON.parse(savedFilms);
     myLibraryContainer.innerHTML = '';
     renderMarkupLibrary(parsedFilms);
-    const totalPage = getTotalPages(parsedFilms);
-    paginationLibrary(currentPage, totalPage);
-    // paginationLibraryContainer.addEventListener('click', onClickEvt);
-    const startIdx = getIndex(currentPage, PER_PAGE);
-    const endIdx = startIdx + PER_PAGE - 1;
-    console.log(endIdx);
-    // console.log(startIdx);
   }
 }
 
-paginationLibraryContainer.addEventListener('click', onClickEvt);
 
 export function renderMarkupLibrary(parsedFilms) {
-if (!parsedFilms) {
-  imgNotFound.classList.add('open');
-  return
-} 
+  if (!parsedFilms) {
+    imgNotFound.classList.add('open');
+    return;
+  }
   const markup = parsedFilms
     .map(
       ({
@@ -108,30 +93,9 @@ if (!parsedFilms) {
       }
     )
     .join('');
-  // return markup;
   myLibraryContainer.insertAdjacentHTML('beforeend', markup);
 
-  let number = 0;
-  for (let i = 0; i < parsedFilms.length; i += 1) {
-    arr.push(parsedFilms[i]);
-    number += 1;
-    if (number === 5) {
-      return;
-    }
-  }
 }
 
-function getTotalPages(arr) {
-  return Math.ceil(arr.length / 6);
-}
 
-function getIndex(currentPage, perPage) {
-  return (currentPage - 1) * perPage;
-}
 
-function onClickEvt(event) {
-  if (event.target.nodeName !== 'A') {
-    return;
-  }
-  currentPage = event.target.textContent;
-}
