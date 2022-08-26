@@ -20,12 +20,14 @@ function changeTheme() {
     document.querySelector('footer').classList.add('footer-dark');
     document.querySelector('header').classList.add('heared-shaddow');
     document.querySelector('.main-modal').classList.add('modal-dark');
+    document.querySelector('.slider').classList.add('modal-dark');
     spanEl.textContent = 'dark_mode';
   } else {
     document.querySelector('body').classList.remove('dark');
     document.querySelector('footer').classList.remove('footer-dark');
     document.querySelector('header').classList.remove('heared-shaddow');
     document.querySelector('.main-modal').classList.remove('modal-dark');
+    document.querySelector('.slider').classList.remove('modal-dark');
     document.querySelector('body').classList.add('light');
     document.querySelector('footer').classList.add('footer-light');
     spanEl.textContent = 'wb_sunny';
