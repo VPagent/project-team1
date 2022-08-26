@@ -9,8 +9,8 @@ const modalContainer = document.querySelector('.main-modal__container');
 const body = document.querySelector('body');
 const backdrop = document.querySelector('.main-modal__backdrop');
 
-// let watchedBtnL
-// let queueBtnL
+let watchedBtnL
+let queueBtnL
 let currFilm
 filmList.addEventListener("click", onFilmClick)
 
