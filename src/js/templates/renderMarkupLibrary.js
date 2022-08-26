@@ -13,7 +13,9 @@ export const btnQueue = document.querySelector(".js-queue")
 const PER_PAGE = 6;
 let currentPage = 1;
 
+
 const imgNotFound = document.querySelector('.img-not-found');
+
 
 export let filmKey = 'Watched';
 
@@ -43,14 +45,7 @@ function getFilmsKey(evt) {
     renderMarkupLibrary(parsedFilms);
   }
 }
-// if(filmKey === "Watched"){
-//   btnWatched.classList.add("current--btn")
-//   btnQueue.classList.remove("current--btn")
-// }
-// if(filmKey === "Queue"){
-//   btnQueue.classList.add("current--btn")
-//   btnWatched.classList.remove("current--btn")
-// }
+
 
 export function renderMarkupLibrary(parsedFilms) {
   if (!parsedFilms) {
@@ -99,4 +94,8 @@ export function renderMarkupLibrary(parsedFilms) {
     )
     .join('');
   myLibraryContainer.insertAdjacentHTML('beforeend', markup);
+
 }
+
+
+
