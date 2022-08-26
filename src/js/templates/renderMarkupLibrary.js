@@ -1,18 +1,14 @@
 import { matchGenresById } from '../findGenres/findGenres';
 
 
-export const myLibraryContainer = document.querySelector(
-  '.film-myLibrary__list'
-
-
-
 export const myLibraryContainer = document.querySelector('.film-myLibrary__list');
+
 const headerButtonlist = document.querySelector('.header-buttonlist');
 // pasha
 export const btnWatched = document.querySelector(".js-watched")
 export const btnQueue = document.querySelector(".js-queue")
 // 
-const headerButtonlist = document.querySelector('.header-buttonlist');
+
 
 const PER_PAGE = 6;
 let currentPage = 1;

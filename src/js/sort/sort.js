@@ -1,6 +1,7 @@
 import { getWeekTrendData, getDayTrendData } from '../api/api_fetch';
 import { renderMarkup } from '../templates/renderMarkup';
 import { hideSpinner, filmGallery } from '../../index';
+import { pagination } from '../pagination/pagination';
 
 const buttonDay = document.querySelector('.sort-button_day');
 const buttonWeek = document.querySelector('.sort-button_week');
