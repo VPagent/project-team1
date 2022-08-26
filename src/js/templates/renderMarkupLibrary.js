@@ -128,7 +128,6 @@ if (!parsedFilms) {
   }
 
   // paginationLibrary(allPages);
-  renderMarkupLibrary(arr);
 }
 
 // console.log(arr);
