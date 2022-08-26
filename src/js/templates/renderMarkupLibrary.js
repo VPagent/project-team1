@@ -35,7 +35,6 @@ function getFilmsKey(evt) {
   }
   if (evt.target.classList.contains('js-queue')) {
     filmKey = 'Queue';
-    console.log(filmKey);
     const savedFilms = localStorage.getItem(filmKey);
     const parsedFilms = JSON.parse(savedFilms);
     myLibraryContainer.innerHTML = '';
