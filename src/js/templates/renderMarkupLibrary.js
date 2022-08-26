@@ -4,8 +4,9 @@ import { paginationLibrary } from '../pagination/paginationLibrary';
 // import { a } from '../pagination/paginationLibrary';
 // console.log(a);
 
-const myLibraryContainer = document.querySelector('.film-myLibrary__list');
+export const myLibraryContainer = document.querySelector('.film-myLibrary__list');
 const headerButtonlist = document.querySelector('.header-buttonlist');
+
 const paginationLibraryContainer = document.querySelector(
   '.page__list-library'
 );
@@ -13,13 +14,21 @@ const paginationLibraryContainer = document.querySelector(
 const PER_PAGE = 6;
 let currentPage = 1;
 
-let filmKey = 'Watched';
+
 let arr = [];
+
+const imgNotFound = document.querySelector('.img-not-found')
+
+export let filmKey = 'Watched';
+
 
 const savedFilms = localStorage.getItem(filmKey);
 const parsedFilms = JSON.parse(savedFilms);
+console.log(parsedFilms.length);
 myLibraryContainer.innerHTML = '';
 renderMarkupLibrary(parsedFilms);
+
+
 
 headerButtonlist.addEventListener('click', getFilmsKey);
 function getFilmsKey(evt) {
@@ -57,9 +66,14 @@ function getFilmsKey(evt) {
   }
 }
 
+
 paginationLibraryContainer.addEventListener('click', onClickEvt);
 
 export function renderMarkupLibrary(parsedFilms) {
+if (!parsedFilms) {
+  imgNotFound.classList.add('open');
+  return
+} 
   const markup = parsedFilms
     .map(
       ({

@@ -8,11 +8,17 @@ import { renderMarkupModal } from './js/mainModal/renderMarkupModal';
 import './js/mainModal/mainModal';
 import './js/toggler/theme';
 import './js/backToTop/BackToTop';
+import { renderSliderMarkup } from './js/slider/slider';
+import Flickity from 'flickity';
+import 'flickity/dist/flickity.css';
+import './js/sort/sort';
+
 
 export const filmGallery = document.querySelector('.film-gallery__list');
 export const GENRES_KEY = 'genres';
 const CURRENT_FILMS_KEY = 'current films';
 const spinnerDiv = document.querySelector('.loader');
+const slider = document.querySelector('.slider');
 
 async function checkGenresInLocaleStorage() {
   const { genres } = await getGenre();
@@ -23,7 +29,6 @@ async function checkGenresInLocaleStorage() {
 if (!localStorage.getItem(GENRES_KEY)) {
   checkGenresInLocaleStorage();
 }
-
 
 export function showSpinner() {
   spinnerDiv.style.display = 'block';
@@ -38,6 +43,8 @@ getTrendData()
     localStorage.setItem(CURRENT_FILMS_KEY, JSON.stringify(response.results));
     localStorage.removeItem('INPUT_VALUE');
     filmGallery.insertAdjacentHTML('beforeend', renderMarkup(response));
+
+    renderSliderMarkup(response);
     hideSpinner();
   })
   .catch(console.error);

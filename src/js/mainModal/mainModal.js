@@ -10,8 +10,17 @@ const backdrop = document.querySelector('.main-modal__backdrop');
 
 //
 openModalBtn.addEventListener('click', misClick);
+
+
+body.addEventListener('keyup', esc);
+
 closeModalBtn.addEventListener('click', closeToggleModal);
 document.addEventListener('click', clickOverlay);
+let currentFilm;
+let watchedBtn;
+let queueBtn;
+let watchedObj = []
+let queueObj = []
 
 function misClick(click) {
   if (click.srcElement.className === 'film-gallery__image') {
@@ -26,18 +35,18 @@ function misClick(click) {
 
     const films = JSON.parse(localData);
     // console.log(films);
-    const currentFilm = films.find(film => film.id.toString() === id);
+    currentFilm = films.find(film => film.id.toString() === id);
     // console.log(currentFilm);
     const modalContent = renderMarkupModal(currentFilm);
     modalContainer.innerHTML = modalContent;
 
-    // PASHA
-    let watchedObj = [];
-    let queueObj = [];
-    const modalBtnList = document.querySelector('.main-modal__buttons');
-    modalBtnList.addEventListener('click', onBtnClickInModal);
-    const watchedBtn = document.querySelector('.main-modal__buttons--watched');
-    const queueBtn = document.querySelector('.main-modal__buttons--queue');
+  // PASHA
+
+    const modalBtnList = document.querySelector(".main-modal__buttons")
+    modalBtnList.addEventListener("click", onBtnClickInModal)
+    watchedBtn = document.querySelector(".main-modal__buttons--watched")
+    queueBtn = document.querySelector(".main-modal__buttons--queue")
+
     // проверка, есть ли объект в локальном хранилище
 
     if (localStorage.getItem('Watched').includes(currentFilm.id)) {
@@ -48,6 +57,7 @@ function misClick(click) {
       queueBtn.textContent = 'Remove in queue';
       queueBtn.classList.add('added');
     }
+
     //
     function onBtnClickInModal(event) {
       if (event.target.nodeName !== 'BUTTON') {
@@ -91,14 +101,11 @@ function misClick(click) {
       }
     }
   }
+
 }
 
-function esc(key) {
-  if (key.code === 'Escape') {
-    closeToggleModal();
-    // console.log('ескейпт');
-  }
-}
+
+ 
 
 function closeToggleModal() {
   modal.classList.add('is-hidden');
@@ -109,6 +116,12 @@ function closeToggleModal() {
 function clickOverlay(overLay) {
   const isContain = overLay.target.classList.contains('main-modal__backdrop');
   if (isContain) {
+    closeToggleModal();
+  }
+}
+
+function esc(key) {
+  if (key.code === 'Escape') {
     closeToggleModal();
   }
 }
