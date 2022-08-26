@@ -63,6 +63,9 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
+
+  animation: fadeInDown; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s;
 }
 
 .team-list {
@@ -96,14 +99,18 @@
   }
 }
 .team-member_foto {
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 10%;
   @media screen and (min-width: $desktop) {
     margin-bottom: 20px;
   }
+  &:hover {
+    transform: scale(1.15);
+  }
 }
 
 .team-member_role {
-  color: #ff6b08;
+  color: rgb(255, 107, 8);
   line-height: 1.12;
   font-weight: 500;
 }
@@ -112,4 +119,14 @@
   position: relative;
   overflow: hidden;
   height: 100vh;
+}
+
+.github {
+  margin-top: 10px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.15);
+  }
 }
