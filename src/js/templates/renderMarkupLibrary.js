@@ -1,15 +1,21 @@
+import { onClickEvt } from '../pagination/paginationLibrary';
 import { matchGenresById } from '../findGenres/findGenres';
 // import { pagination } from '../pagination/pagination';
 
-const myLibraryContainer = document.querySelector('.film-myLibrary__list');
-const headerButtonlist = document.querySelector('.header-buttonlist');
 
-let filmKey = 'Watched';
+export const myLibraryContainer = document.querySelector('.film-myLibrary__list');
+const headerButtonlist = document.querySelector('.header-buttonlist');
+const imgNotFound = document.querySelector('.img-not-found')
+
+export let filmKey = 'Watched';
 
 const savedFilms = localStorage.getItem(filmKey);
 const parsedFilms = JSON.parse(savedFilms);
+console.log(parsedFilms.length);
 myLibraryContainer.innerHTML = '';
 renderMarkupLibrary(parsedFilms)
+
+
 
 headerButtonlist.addEventListener('click', getFilmsKey);
 function getFilmsKey(evt) {
@@ -18,8 +24,7 @@ function getFilmsKey(evt) {
     }
   if (evt.target.classList.contains('js-watched')) {
     filmKey = 'Watched'
-    console.log(filmKey);
-         const savedFilms = localStorage.getItem(filmKey);
+    const savedFilms = localStorage.getItem(filmKey);
     const parsedFilms = JSON.parse(savedFilms);
     myLibraryContainer.innerHTML = '';
      renderMarkupLibrary(parsedFilms)
@@ -34,10 +39,11 @@ function getFilmsKey(evt) {
   }
 }
 
-// console.log(parsedFilms); // settings object
-
 export function renderMarkupLibrary(parsedFilms) {
-  console.log(parsedFilms);
+if (!parsedFilms) {
+  imgNotFound.classList.add('open');
+  return
+} 
   const markup = parsedFilms
   .map(
     ({
@@ -84,19 +90,6 @@ export function renderMarkupLibrary(parsedFilms) {
                     // return markup;
                     myLibraryContainer.insertAdjacentHTML('beforeend', markup);
                   }
-                  
-                  
-
-
-
-
-
-
-
-
-
-
-
 
 
 
