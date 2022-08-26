@@ -1,8 +1,17 @@
 import { matchGenresById } from '../findGenres/findGenres';
 
+
 export const myLibraryContainer = document.querySelector(
   '.film-myLibrary__list'
-);
+
+
+
+export const myLibraryContainer = document.querySelector('.film-myLibrary__list');
+const headerButtonlist = document.querySelector('.header-buttonlist');
+// pasha
+export const btnWatched = document.querySelector(".js-watched")
+export const btnQueue = document.querySelector(".js-queue")
+// 
 const headerButtonlist = document.querySelector('.header-buttonlist');
 
 const PER_PAGE = 6;
@@ -14,7 +23,6 @@ export let filmKey = 'Watched';
 
 const savedFilms = localStorage.getItem(filmKey);
 const parsedFilms = JSON.parse(savedFilms);
-console.log(parsedFilms.length);
 myLibraryContainer.innerHTML = '';
 renderMarkupLibrary(parsedFilms);
 
@@ -39,6 +47,14 @@ function getFilmsKey(evt) {
     renderMarkupLibrary(parsedFilms);
   }
 }
+// if(filmKey === "Watched"){
+//   btnWatched.classList.add("current--btn")
+//   btnQueue.classList.remove("current--btn")
+// }
+// if(filmKey === "Queue"){
+//   btnQueue.classList.add("current--btn")
+//   btnWatched.classList.remove("current--btn")
+// }
 
 export function renderMarkupLibrary(parsedFilms) {
   if (!parsedFilms) {
