@@ -8,7 +8,8 @@ const closeModalBtn = document.querySelector('[data-modal-main-close]');
 const modalContainer = document.querySelector('.main-modal__container');
 const body = document.querySelector('body');
 const backdrop = document.querySelector('.main-modal__backdrop');
-
+let watchedObj = []
+let queueObj = []
 let watchedBtnL
 let queueBtnL
 let currFilm
@@ -31,8 +32,8 @@ function onFilmClick(event){
 
     closeModalBtn.addEventListener('click', closeToggleModal);
     document.addEventListener('click', clickOverlay);
-    let watchedObj = []
-    let queueObj = []
+    // let watchedObj = []
+    // let queueObj = []
     watchedBtnL = document.querySelector(".main-modal__buttons--watched")
     watchedBtnL.textContent = "Remove in watched"
     watchedBtnL.classList.add("added")
