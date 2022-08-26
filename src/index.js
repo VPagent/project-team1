@@ -12,7 +12,7 @@ import { renderSliderMarkup } from './js/slider/slider';
 import Flickity from 'flickity';
 import 'flickity/dist/flickity.css';
 import './js/sort/sort';
-
+import './js/toggler/theme';
 
 export const filmGallery = document.querySelector('.film-gallery__list');
 export const GENRES_KEY = 'genres';
