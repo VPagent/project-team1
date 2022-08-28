@@ -43,9 +43,10 @@ function getFilmsKey(evt) {
 }
 
 export function renderMarkupLibrary(parsedFilms) {
-  if (!parsedFilms) {
-    imgNotFound.classList.add('open');
-    return;
+  if (parsedFilms.length === 0) {
+    // imgNotFound.classList.add('open');
+    return errorBox(myLibraryContainer)
+    
   }
   const markup = parsedFilms
     .map(
@@ -89,4 +90,12 @@ export function renderMarkupLibrary(parsedFilms) {
     )
     .join('');
   myLibraryContainer.insertAdjacentHTML('beforeend', markup);
+}
+
+function errorBox(div){
+  return div.innerHTML = `<div class="error-box">
+  <p class="error-text-lib">Whoops( </br>
+  you haven't added anything yet
+  </p>
+  </div>`
 }
