@@ -13,7 +13,6 @@ import Flickity from 'flickity';
 import 'flickity/dist/flickity.css';
 import './js/sort/sort';
 
-
 export const filmGallery = document.querySelector('.film-gallery__list');
 export const GENRES_KEY = 'genres';
 const CURRENT_FILMS_KEY = 'current films';
@@ -48,3 +47,14 @@ getTrendData()
     hideSpinner();
   })
   .catch(console.error);
+
+// export function onSmoothScroll() {
+//   const { height: cardHeight } = document
+//     .querySelector('.content')
+//     .firstElementChild.getBoundingClientRect();
+
+//   window.scrollBy({
+//     top: cardHeight * 2,
+//     behavior: 'smooth',
+//   });
+// }
