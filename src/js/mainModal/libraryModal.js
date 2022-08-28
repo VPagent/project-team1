@@ -24,7 +24,7 @@ function onFilmClick(event){
     let currFilm = allFilms.find(elem => elem.id.toString() === id)
     
     modalContainer.innerHTML= renderMarkupModal(currFilm)
-
+    body.addEventListener("keyup", esc)
     closeModalBtn.addEventListener('click', closeToggleModal);
     document.addEventListener('click', clickOverlay);
     let watchedObj = []
@@ -57,7 +57,6 @@ function onFilmClick(event){
           if(localStorage.getItem("Watched")){
             watchedObj = JSON.parse(localStorage.getItem("Watched"))
           }
-
           if(event.target.classList.contains("added")){
             const idx = watchedObj.findIndex(elem => elem.id === currFilm.id)
             watchedObj.splice(idx, 1)
@@ -66,13 +65,14 @@ function onFilmClick(event){
             watchedBtnL.classList.remove("added")
             myLibraryContainer.innerHTML=""
             renderMarkupLibrary( JSON.parse(localStorage.getItem(CURRENT_STORAGE)))
-            closeToggleModal()
             return
           }
           watchedObj.push(currFilm)
           localStorage.setItem("Watched", JSON.stringify(watchedObj))
           watchedBtnL.textContent = "Remove in watched"
           watchedBtnL.classList.add("added")
+          myLibraryContainer.innerHTML=""
+          renderMarkupLibrary( JSON.parse(localStorage.getItem(CURRENT_STORAGE)))
       }
   
       if(event.target.classList.contains("main-modal__buttons--queue")){
@@ -88,13 +88,14 @@ function onFilmClick(event){
             queueBtnL.classList.remove("added")
             myLibraryContainer.innerHTML=""
             renderMarkupLibrary( JSON.parse(localStorage.getItem(CURRENT_STORAGE)))
-            closeToggleModal()
             return
           }
           queueObj.push(currFilm)
           localStorage.setItem("Queue", JSON.stringify(queueObj))
           queueBtnL.textContent = "Remove in queue"
           queueBtnL.classList.add("added")
+          myLibraryContainer.innerHTML=""
+          renderMarkupLibrary( JSON.parse(localStorage.getItem(CURRENT_STORAGE)))
       }
   }
 
@@ -110,6 +111,7 @@ function esc(key) {
 function closeToggleModal() {
     modal.classList.add('is-hidden');
     body.classList.remove('overflow');
+    body.removeEventListener('keyup', esc);
 }
   
 function clickOverlay(overLay) {
