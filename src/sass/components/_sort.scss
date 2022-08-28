@@ -1,9 +1,9 @@
 .sort {
   display: flex;
   margin: 20px 0 0 100px;
-
+  align-items: center;
   @media screen and(min-width: $mobile) {
-    margin: 10px 0 0 40px;
+    margin: 10px 0 10px 40px;
   }
 }
 .sort p {
